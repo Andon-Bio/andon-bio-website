@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ptarmigan Bio | Advancing Biotechnology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Economica:wght@400;700&family=Inter:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #121a23;
+            --secondary-color: #238b45;
+            --accent-color: #74c476;
+            --accent-dark: #00441b;
+            --accent-light: #a1d99b;
+            --light-color: #f8f9fa;
+            --dark-color: #121212;
+            --font-main: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            --font-header: 'Economica', sans-serif;
+            --font-hero: 'Montserrat', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--light-color);
+            background-color: var(--primary-color);
+            overflow-x: hidden;
+            background-image: linear-gradient(to bottom, #1d2a36, #162430);
+        }
+        
+        header {
+            background-color: rgba(34, 44, 55, 0.9);
+            color: white;
+            padding: 0;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-pill {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            min-width: 450px;
+            height: 90px;
+            background-color: white;
+            border-radius: 45px;
+            z-index: -1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-underline {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .logo {
+            width: 65px;
+            height: 65px;
+            margin-right: 20px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+        }
+        
+        .company-name {
+            font-family: 'Economica', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(34, 44, 55, 0.9);
+            position: relative;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-dark) 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgxMzUpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9InJnYmEoMTYxLDIxNywxNTUsMC4wNSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-family: var(--font-hero);
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
+            font-weight: 300;
+            font-family: var(--font-hero);
+        }
+        
+        .coming-soon {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(161, 217, 155, 0.2);
+            border-radius: 50px;
+            font-weight: 500;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(161, 217, 155, 0.3);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-hero);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--light-color);
+            text-align: center;
+            font-family: var(--font-header);
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-light);
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+        
+        label {
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            display: block;
+            color: var(--light-color);
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-family: var(--font-main);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--light-color);
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-light);
+            background-color: rgba(255, 255, 255, 0.07);
+        }
+        
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        button:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: var(--light-color);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 768px) {
+            .company-name {
+                font-size: 2.5rem;
+            }
+            
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+            
+            button {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo-pill"></div>
+            <div class="logo">
+                <img src="ptarmigan_ring.svg" alt="Ptarmigan Bio Logo">
+            </div>
+            <div class="company-name">PTARMIGAN BIO</div>
+            <div class="logo-underline"></div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="hero">
+            <div class="hero-content">
+                <span class="coming-soon">Coming Soon</span>
+                <h1>Protein Synthesis in Context</h1>
+                <p class="subtitle">New breakthroughs in protein optimization.<br>Our innovative platform is currently in development.</p>
+            </div>
+        </div>
+        
+        <section class="contact-form">
+            <h2>Stay Updated</h2>
+            <form action="https://formspree.io/f/mdkgyeog" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="organization">Organization</label>
+                    <input type="text" id="organization" name="organization">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                
+                <button type="submit">Join Our Journey</button>
+                
+                <!-- Form submission status messages -->
+                <div id="form-message" style="margin-top: 1rem; display: none;"></div>
+            </form>
+            
+            <script>
+                // Simple form submission handling with feedback
+                const form = document.querySelector('form');
+                const formMessage = document.getElementById('form-message');
+                
+                form.addEventListener('submit', function(e) {
+                    // Formspree will handle the actual submission
+                    
+                    // Show the sending status
+                    formMessage.style.display = 'block';
+                    formMessage.style.color = 'var(--accent-color)';
+                    formMessage.textContent = 'Sending your message...';
+                    
+                    // Add submission feedback - this will show briefly before Formspree redirects
+                    setTimeout(function() {
+                        formMessage.style.color = 'var(--accent-color)';
+                        formMessage.textContent = 'Message sent successfully!';
+                    }, 1500);
+                });
+            </script>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p class="copyright">© 2025 Ptarmigan Bio. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
