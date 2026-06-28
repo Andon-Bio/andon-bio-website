@@ -1,22 +1,44 @@
 ---
-interface Props {
-  href: string;
-  variant?: "pill" | "pill-light" | "link";
-  class?: string;
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  variant?: "primary" | "secondary" | "amber" | "link";
+  size?: "sm" | "default" | "lg";
 }
 
-const { href, variant = "pill", class: className = "" } = Astro.props;
+const {
+  variant = "primary",
+  size = "default",
+  class: className,
+  ...rest
+} = Astro.props;
 
 const base =
-  "inline-flex items-center gap-2 font-mono text-sm tracking-[0.035em] transition-colors duration-200";
+  "font-button inline-flex items-center justify-center gap-2 rounded-full whitespace-nowrap transition-colors duration-200";
 
 const variants: Record<string, string> = {
-  pill: "rounded-full bg-ink px-6 py-3 text-paper hover:bg-navy",
-  "pill-light": "rounded-full border border-line bg-cream px-6 py-3 text-ink hover:border-ink",
-  link: "text-accent hover:text-ink underline-offset-4 hover:underline",
+  primary: "bg-ink text-paper hover:bg-navy-soft",
+  secondary: "border border-ink/25 text-ink hover:border-ink/60",
+  amber: "bg-accent text-ink hover:bg-accent-600",
+  link: "px-0 text-accent-700 underline-offset-4 hover:text-accent-800 hover:underline",
 };
+
+const sizes: Record<string, string> = {
+  sm: "text-sm tracking-wide px-4 py-2",
+  default: "text-sm tracking-wide px-6 py-3",
+  lg: "text-base tracking-wide px-7 py-3.5",
+};
+
+// The link variant is inline text — keep the size's type scale, drop the padding.
+const linkSizes: Record<string, string> = {
+  sm: "text-sm tracking-wide",
+  default: "text-sm tracking-wide",
+  lg: "text-base tracking-wide",
+};
+
+const sizeClass = variant === "link" ? linkSizes[size] : sizes[size];
 ---
 
-<a href={href} class={`${base} ${variants[variant]} ${className}`}>
+<a class:list={[base, variants[variant], sizeClass, className]} {...rest}>
   <slot />
 </a>

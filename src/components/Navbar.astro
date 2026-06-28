@@ -3,78 +3,38 @@ import { SITE, NAV } from "../site";
 import Button from "./Button.astro";
 ---
 
-<header class="sticky top-0 z-50 border-b border-line/70 bg-cream/85 backdrop-blur">
-  <nav
-    class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
-    aria-label="Primary"
+<header
+  class="sticky top-0 z-50 border-b border-line/60 bg-cream/80 backdrop-blur-md"
+>
+  <div
+    class="mx-auto flex w-full max-w-[80rem] items-center justify-between px-6 py-4 md:px-10"
   >
-    <a href="/" class="flex items-center gap-2.5" aria-label="Andon Bio home">
+    <a href="/" class="flex items-center gap-3">
       <img
         src="/ptarmigan_ring.svg"
-        alt=""
-        width="32"
-        height="32"
-        class="h-8 w-8"
-        aria-hidden="true"
+        alt="Andon Bio"
+        width="36"
+        height="36"
+        class="h-8 w-8 transition-transform duration-700 hover:rotate-180 md:h-9 md:w-9"
       />
-      <span class="font-display text-lg font-bold tracking-tight text-ink">
+      <span
+        class="font-display text-lg font-bold tracking-tight text-ink md:text-xl"
+      >
         Andon Bio
       </span>
     </a>
-
-    <!-- Desktop nav -->
-    <div class="hidden items-center gap-8 md:flex">
+    <nav class="flex items-center gap-6" aria-label="Primary">
       {
         NAV.map((item) => (
           <a
             href={item.href}
-            class="text-sm text-muted transition-colors hover:text-ink"
+            class="hidden text-sm text-muted transition-colors hover:text-ink sm:inline"
           >
             {item.label}
           </a>
         ))
       }
-      <Button href={`mailto:${SITE.email}`} variant="pill">Get early access</Button>
-    </div>
-
-    <!-- Mobile toggle -->
-    <button
-      id="nav-toggle"
-      class="inline-flex h-10 w-10 items-center justify-center rounded-md text-ink md:hidden"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-    >
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <line x1="3" y1="12" x2="21" y2="12" />
-        <line x1="3" y1="18" x2="21" y2="18" />
-      </svg>
-    </button>
-  </nav>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden border-t border-line bg-cream md:hidden">
-    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-5">
-      {
-        NAV.map((item) => (
-          <a href={item.href} class="text-sm text-muted hover:text-ink">
-            {item.label}
-          </a>
-        ))
-      }
-      <Button href={`mailto:${SITE.email}`} variant="pill" class="w-fit">
-        Get early access
-      </Button>
-    </div>
+      <Button href={`mailto:${SITE.email}`} size="sm">Get early access</Button>
+    </nav>
   </div>
 </header>
-
-<script>
-  const toggle = document.getElementById("nav-toggle");
-  const menu = document.getElementById("mobile-menu");
-  toggle?.addEventListener("click", () => {
-    const isOpen = menu?.classList.toggle("hidden") === false;
-    toggle.setAttribute("aria-expanded", String(isOpen));
-  });
-</script>

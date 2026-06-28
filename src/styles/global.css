@@ -1,39 +1,44 @@
 @import "tailwindcss";
 
 /*
-  Design tokens — exact values from the Ploy prototype design system.
-  Fonts:  Plus Jakarta Sans (display) · Inter (body/labels) · Monaco (mono, system).
-  Colors: warm off-white canvas, unified graphite #1E2530 for text/dark panels,
-          amber "signal" accent, cool-blue focus ring (focus only).
+  Andon Bio design tokens.
+  Values lifted from the design prototype (OKLCH), expressed as a small, flat
+  token set. Roles: warm off-white canvas, graphite ink for text + dark panels,
+  amber "signal" accent (with a scale), cool-blue focus ring.
 */
 @theme {
   /* Type */
-  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: "Monaco", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-eyebrow: "Inter", system-ui, -apple-system, sans-serif;
+  --font-button: "Monaco", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   /* Surfaces */
-  --color-cream: #f4f1eb;        /* canvas / background (neutral-primary) */
-  --color-cream-deep: #eae3d3;   /* hero glow stop (warm) */
-  --color-surface: #e6e2da;      /* secondary surface (neutral-secondary) */
-  --color-navy: #1e2530;         /* dark panels / footer (background-inverse) */
-  --color-navy-soft: #2a3340;    /* tiles / cards on dark */
+  --color-cream: oklch(0.955 0.007 90);   /* canvas / page background */
+  --color-cream-deep: oklch(0.92 0.012 88);/* warm hero glow stop */
+  --color-surface: oklch(0.915 0.008 88);  /* secondary light sections */
+  --color-navy: oklch(0.21 0.025 250);     /* dark panels / footer (graphite) */
+  --color-navy-soft: oklch(0.3 0.022 252); /* tiles on dark / primary btn hover */
 
   /* Text */
-  --color-ink: #1e2530;          /* primary text (graphite) */
-  --color-muted: #5c6470;        /* secondary text on light */
-  --color-faint: #8a8f98;        /* eyebrow / metadata on light */
-  --color-paper: #f4f1eb;        /* text on dark */
-  --color-paper-muted: #a6adb8;  /* secondary text on dark */
+  --color-ink: oklch(0.21 0.025 250);      /* primary text (graphite) */
+  --color-muted: oklch(0.46 0.02 255);     /* secondary text on light */
+  --color-faint: oklch(0.62 0.012 250);    /* eyebrow / metadata on light */
+  --color-paper: oklch(0.955 0.007 90);    /* text on dark */
+  --color-paper-muted: oklch(0.8 0.01 90); /* secondary text on dark */
 
-  /* Accent */
-  --color-accent: #d6a85c;       /* amber signal (accent-primary) */
-  --color-accent-bright: #e0b673;/* amber on dark backgrounds */
+  /* Accent (amber signal scale) */
+  --color-accent: oklch(0.78 0.105 85);     /* base */
+  --color-accent-400: oklch(0.82 0.098 86); /* lighter — on dark / hovers */
+  --color-accent-600: oklch(0.72 0.105 85); /* amber button hover */
+  --color-accent-700: oklch(0.63 0.095 84); /* link text on light */
+  --color-accent-800: oklch(0.53 0.08 83);  /* link hover */
 
   /* Lines + focus */
-  --color-line: #ddd7ca;         /* borders on light */
-  --color-line-dark: #2e3744;    /* borders on dark */
-  --color-ring: #3b6fd4;         /* focus ring (cool blue, focus only) */
+  --color-line: oklch(0.8 0.012 88);       /* borders on light */
+  --color-line-dark: oklch(0.33 0.018 252);/* borders/dividers on dark */
+  --color-ring: oklch(0.6 0.2 250);        /* focus ring (cool blue) */
 }
 
 @layer base {
@@ -51,11 +56,13 @@
     overflow-x: hidden;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-display);
-    color: var(--color-ink);
-    line-height: 1.1;
+    font-weight: 700;
     letter-spacing: -0.025em;
+    line-height: 1.1;
   }
 
   ::selection {
@@ -69,20 +76,66 @@
   }
 }
 
-/* Continuous rotation for the amino-acid ring (pauses on hover). */
-@keyframes andon-spin {
-  to { transform: rotate(360deg); }
+/* Motion */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
+/* Amino-acid ring: continuous slow rotation, pauses on hover. */
 .andon-ring {
-  animation: andon-spin 120s linear infinite;
+  animation: rotate 120s linear infinite;
   transform-origin: center;
 }
 .andon-ring:hover {
   animation-play-state: paused;
 }
 
+/* Entrance animations: fade-rise (default) + fade-scale (hero artifact).
+   Add inline `animation-delay` to stagger. */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.rise {
+  animation: fadeInUp 0.6s ease-out both;
+}
+.rise-scale {
+  animation: fadeInScale 1s ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .andon-ring { animation: none; }
+  html {
+    scroll-behavior: auto;
+  }
+  .andon-ring,
+  .rise,
+  .rise-scale {
+    animation: none;
+  }
 }

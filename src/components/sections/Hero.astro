@@ -1,76 +1,99 @@
 ---
 import { SITE } from "../../site";
 import Button from "../Button.astro";
+
+const CALLOUTS = [
+  {
+    label: "Measure",
+    sub: "Charged tRNAs, read directly",
+    pos: "left-[-7rem] top-[14%] items-end text-right",
+  },
+  {
+    label: "Reveal",
+    sub: "Translational bottlenecks",
+    pos: "right-[-7.5rem] top-[46%] items-start text-left",
+  },
+  {
+    label: "Predict",
+    sub: "Better sequence design",
+    pos: "bottom-[8%] left-[-5rem] items-end text-right",
+  },
+];
 ---
 
-<section class="relative overflow-hidden bg-cream">
-  <!-- warm glow behind the headline -->
+<section
+  class="relative overflow-hidden px-6 pt-16 pb-20 md:px-10 md:pt-24 md:pb-28"
+>
+  {/* atmospheric amber wash, grounded in the warm canvas */}
   <div
-    class="pointer-events-none absolute inset-x-0 top-0 h-[460px]"
-    style="background: radial-gradient(62% 120% at 50% 0%, var(--color-cream-deep), transparent 70%);"
     aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10"
+    style="background: radial-gradient(60% 55% at 50% 8%, oklch(0.78 0.105 85 / 0.16), transparent 70%);"
   >
   </div>
 
-  <div class="relative mx-auto max-w-4xl px-6 pt-20 pb-12 text-center sm:pt-28">
-    <h1 class="font-display text-5xl font-bold tracking-tight text-ink sm:text-6xl md:text-7xl">
+  <div class="mx-auto max-w-[52rem] text-center">
+    <h1
+      class="rise text-balance font-display text-4xl font-extrabold leading-[1.04] tracking-[-0.03em] text-ink md:text-6xl"
+    >
       Making translation measurable
     </h1>
-    <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted">
+    <p
+      class="rise mx-auto mt-6 max-w-[36rem] text-lg leading-[1.6] text-muted md:text-xl"
+      style="animation-delay: 120ms"
+    >
       Andon measures charged tRNAs directly — revealing what limits protein
       expression and powering predictive sequence design.
     </p>
-    <div class="mt-9 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
-      <Button href={`mailto:${SITE.email}`} variant="pill">Get early access</Button>
-      <Button href="/#how-it-works" variant="link">See how it works</Button>
+    <div
+      class="rise mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
+      style="animation-delay: 240ms"
+    >
+      <Button href={`mailto:${SITE.email}`} size="lg">Get early access</Button>
+      <Button href="#how" variant="link" size="lg">See how it works</Button>
     </div>
   </div>
 
-  <!-- ring + Measure / Reveal / Predict callouts -->
-  <div class="relative mx-auto max-w-5xl px-6 pb-24">
-    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_auto_1fr]">
-      <!-- left callouts -->
-      <div class="order-2 flex flex-row justify-center gap-12 lg:order-1 lg:flex-col lg:items-end lg:gap-24 lg:text-right">
-        <div>
-          <span class="flex items-center gap-2 lg:flex-row-reverse">
-            <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-            <span class="h-px w-8 bg-accent/40"></span>
-          </span>
-          <p class="mt-2 text-sm font-semibold text-ink">Measure</p>
-          <p class="text-xs leading-snug text-muted">Charged tRNAs, read directly</p>
-        </div>
-        <div>
-          <span class="flex items-center gap-2 lg:flex-row-reverse">
-            <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-            <span class="h-px w-8 bg-accent/40"></span>
-          </span>
-          <p class="mt-2 text-sm font-semibold text-ink">Predict</p>
-          <p class="text-xs leading-snug text-muted">Better sequence design</p>
-        </div>
-      </div>
+  {/* Hero artifact: the rotating tRNA ring with measurement callouts */}
+  <div
+    class="rise-scale relative mx-auto mt-16 flex max-w-[40rem] items-center justify-center md:mt-20"
+    style="animation-delay: 300ms"
+  >
+    <img
+      src="/ptarmigan_ring.svg"
+      alt="The 20 amino acids arranged as a tRNA charging ring"
+      width="416"
+      height="416"
+      class="andon-ring w-[18rem] md:w-[26rem]"
+    />
 
-      <!-- ring -->
-      <div class="order-1 flex justify-center lg:order-2">
-        <img
-          src="/ptarmigan_ring.svg"
-          alt="A ring of the 20 amino acids, representing direct measurement of charged tRNAs"
-          width="460"
-          height="460"
-          class="andon-ring w-full max-w-[340px] sm:max-w-md"
-        />
-      </div>
-
-      <!-- right callout -->
-      <div class="order-3 flex justify-center lg:justify-start lg:text-left">
-        <div>
-          <span class="flex items-center gap-2">
-            <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-            <span class="h-px w-8 bg-accent/40"></span>
-          </span>
-          <p class="mt-2 text-sm font-semibold text-ink">Reveal</p>
-          <p class="text-xs leading-snug text-muted">Translational bottlenecks</p>
-        </div>
-      </div>
+    {/* Callouts — absolute around the ring on lg */}
+    <div class="pointer-events-none absolute inset-0 hidden lg:block">
+      {
+        CALLOUTS.map((c) => (
+          <div class={`absolute flex w-[10rem] flex-col ${c.pos}`}>
+            <div class="mb-2 flex items-center gap-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-accent" />
+              <span class="h-px w-10 bg-accent/50" />
+            </div>
+            <span class="font-display text-sm font-bold text-ink">{c.label}</span>
+            <span class="mt-1 text-xs leading-snug text-muted">{c.sub}</span>
+          </div>
+        ))
+      }
     </div>
+  </div>
+
+  {/* Callouts — stacked row below the ring on small screens */}
+  <div class="mx-auto mt-12 grid max-w-[34rem] grid-cols-3 gap-4 lg:hidden">
+    {
+      CALLOUTS.map((c) => (
+        <div class="flex flex-col items-center text-center">
+          <span class="mb-2 h-1.5 w-1.5 rounded-full bg-accent" />
+          <span class="font-display text-sm font-bold text-ink">{c.label}</span>
+          <span class="mt-1 text-xs leading-snug text-muted">{c.sub}</span>
+        </div>
+      ))
+    }
   </div>
 </section>

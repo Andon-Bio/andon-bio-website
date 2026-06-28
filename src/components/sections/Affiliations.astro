@@ -1,16 +1,22 @@
 ---
 import { AFFILIATIONS } from "../../site";
+
+const label = "Spun out of CU Anschutz · built with";
 ---
 
-<section class="border-b border-line bg-cream">
-  <div class="mx-auto max-w-5xl px-6 py-14 text-center">
-    <p class="font-mono text-xs uppercase tracking-[0.18em] text-faint">
-      Spun out of CU Anschutz · Built with
+<section class="border-y border-line/60 px-6 py-12 md:px-10">
+  <div class="rise mx-auto max-w-[72rem] text-center">
+    <p class="font-button text-xs uppercase tracking-[0.18em] text-muted">
+      {label}
     </p>
-    <div class="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+    <div
+      class="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-x-10"
+    >
       {
-        AFFILIATIONS.map((name) => (
-          <span class="text-sm font-medium text-ink/80">{name}</span>
+        AFFILIATIONS.map((mark) => (
+          <span class="font-display text-sm font-semibold text-ink md:text-base">
+            {mark}
+          </span>
         ))
       }
     </div>

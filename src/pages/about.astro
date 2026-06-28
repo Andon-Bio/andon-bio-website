@@ -1,52 +1,114 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PageHero from "../components/PageHero.astro";
 import Affiliations from "../components/sections/Affiliations.astro";
 import Cta from "../components/sections/Cta.astro";
 
-// TODO: confirm/replace with the exact copy + real team bios from the Ploy `about` page.
-const blocks = [
+const FOUNDERS = [
   {
-    h: "Our mission",
-    p: "Translation is where genotype becomes phenotype — and where protein production most often fails. Andon makes it measurable so it can be engineered, not guessed at.",
+    initials: "LW",
+    name: "Laura White",
+    role: "CEO & Co-Founder",
+    bio: "RNA biologist who co-invented aa-tRNA-seq, the nanopore method behind Andon. PhD in Molecular Biology from CU Anschutz, where she led nanopore method development in the Hesselberth Lab.",
   },
   {
-    h: "Spun out of CU Anschutz",
-    p: "Andon spun out of the University of Colorado Anschutz Medical Campus, building on nanopore aa-tRNA-seq — a single-molecule method for reading tRNA charging co-invented there.",
-  },
-  {
-    h: "What we're building",
-    p: "A measurement layer for protein expression: direct charging data, the analysis that turns it into translational bottlenecks, and a predictive engine that designs better sequences from it.",
+    initials: "JA",
+    name: "Jake Armstrong",
+    role: "Co-Founder",
+    bio: "Co-founder of Andon Bio, working alongside Laura to turn tRNA-charging measurement into a platform for predictive protein expression.",
   },
 ];
 ---
 
 <Layout
   title="About"
-  description="Andon Bio is a Denver biotech, spun out of CU Anschutz, building the measurement layer for protein expression."
+  description="Andon Bio is a University of Colorado Anschutz spin-out in Denver, building sequencing-based tools that measure tRNA charging and optimize protein expression."
 >
-  <PageHero
-    eyebrow="About"
-    title="Building the measurement layer for protein expression"
-    lead="Andon is a Denver-based biotech, spun out of CU Anschutz, making translation measurable so protein teams can stop guessing."
-  />
-
-  <section class="bg-surface">
-    <div class="mx-auto max-w-3xl space-y-14 px-6 py-20">
-      {
-        blocks.map((b) => (
-          <div>
-            <h2 class="font-display text-2xl font-bold text-ink md:text-3xl">
-              {b.h}
-            </h2>
-            <p class="mt-3 text-lg leading-relaxed text-muted">{b.p}</p>
-          </div>
-        ))
-      }
-      {/* TODO: add a Team section with real names, roles, and short bios. */}
+  {/* Hero */}
+  <section class="px-6 pt-20 pb-16 md:px-10 md:pt-28 md:pb-20">
+    <div class="mx-auto max-w-[46rem]">
+      <h1
+        class="rise text-balance font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-ink md:text-[3.5rem]"
+      >
+        We're making translation measurable
+      </h1>
+      <p
+        class="rise mt-6 max-w-[38rem] text-lg leading-[1.7] text-muted md:text-xl"
+        style="animation-delay: 120ms"
+      >
+        Andon Bio is a University of Colorado Anschutz spin-out, founded in 2025
+        and based in Denver. We build sequencing-based tools that measure tRNA
+        charging and optimize protein expression.
+      </p>
     </div>
   </section>
 
-  <Affiliations />
-  <Cta />
+  {/* Story band — asymmetric */}
+  <section class="border-t border-line/60 px-6 py-20 md:px-10 md:py-24">
+    <div
+      class="mx-auto grid max-w-[72rem] gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16"
+    >
+      <h2
+        class="rise text-balance font-display text-2xl font-bold leading-[1.15] tracking-[-0.02em] text-ink md:text-[2.25rem]"
+      >
+        The measurement layer that translation has been missing.
+      </h2>
+      <div
+        class="rise space-y-4 self-end text-lg leading-[1.7] text-muted"
+        style="animation-delay: 100ms"
+      >
+        <p>
+          Protein expression still runs largely on trial and error because the
+          molecular supply of translational resources has been invisible.
+          Andon's nanopore method, developed at CU Anschutz, measures tRNA
+          charging directly.
+        </p>
+        <p>
+          That data powers a predictive engine that replaces guesswork with real
+          measurements — helping teams improve protein yield and cut costly
+          development cycles.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Founders */}
+  <section class="px-6 py-8 md:px-10">
+    <div class="mx-auto max-w-[72rem]">
+      <h2
+        class="font-display text-2xl font-bold tracking-[-0.02em] text-ink md:text-3xl"
+      >
+        Founders
+      </h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        {
+          FOUNDERS.map((f, i) => (
+            <article
+              class="rise rounded-2xl border border-line/70 bg-surface p-7"
+              style={`animation-delay: ${i * 60}ms`}
+            >
+              <span class="flex h-14 w-14 items-center justify-center rounded-full bg-accent font-display text-lg font-bold text-ink">
+                {f.initials}
+              </span>
+              <h3 class="mt-5 font-display text-xl font-bold tracking-tight text-ink">
+                {f.name}
+              </h3>
+              <p class="mt-1 font-button text-xs uppercase tracking-[0.16em] text-accent-700">
+                {f.role}
+              </p>
+              <p class="mt-4 text-[0.95rem] leading-[1.65] text-muted">{f.bio}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-12 md:mt-20">
+    <Affiliations />
+  </div>
+
+  <Cta
+    heading="Join us in measuring translation"
+    body="Whether you're a protein engineer, a biomanufacturer, or a future teammate — we'd love to hear from you."
+  />
 </Layout>

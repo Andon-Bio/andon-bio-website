@@ -1,22 +1,33 @@
 ---
 import { SITE } from "../../site";
 import Button from "../Button.astro";
+
+interface Props {
+  heading?: string;
+  body?: string;
+}
+
+const {
+  heading = "Want early access or to collaborate?",
+  body = "We're partnering with protein engineers and biomanufacturers who want to measure translation instead of guessing at it.",
+} = Astro.props;
 ---
 
-<section class="bg-cream">
-  <div class="mx-auto max-w-2xl px-6 py-24 text-center">
-    <h2 class="font-display text-4xl font-bold leading-tight text-ink md:text-5xl">
-      Want early access or to collaborate?
+<section class="px-6 py-24 text-center md:px-10 md:py-32">
+  <div class="rise mx-auto max-w-[42rem]">
+    <h2
+      class="text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl"
+    >
+      {heading}
     </h2>
-    <p class="mx-auto mt-5 max-w-lg text-lg leading-relaxed text-muted">
-      We're partnering with protein engineers and biomanufacturers who want to
-      measure translation instead of guessing at it.
+    <p class="mx-auto mt-5 max-w-[34rem] text-lg leading-[1.7] text-muted">
+      {body}
     </p>
     <div class="mt-9 flex flex-col items-center gap-4">
-      <Button href={`mailto:${SITE.email}`} variant="pill">Get early access</Button>
+      <Button href={`mailto:${SITE.email}`} size="lg">Get early access</Button>
       <a
         href={`mailto:${SITE.email}`}
-        class="font-mono text-sm text-accent hover:underline"
+        class="font-button text-sm tracking-wide text-accent-700 transition-colors hover:text-accent-800"
       >
         {SITE.email}
       </a>
