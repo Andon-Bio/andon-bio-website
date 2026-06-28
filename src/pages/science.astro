@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Cta from "../components/sections/Cta.astro";
+
+// TODO: confirm/replace with the exact copy from the Ploy `science` page.
+const blocks = [
+  {
+    h: "Charged tRNAs are the currency of translation",
+    p: "Every codon a ribosome reads has to be matched by an aminoacyl- (charged) tRNA. When demand for a codon outpaces the pool of its charged tRNA, the ribosome stalls and protein output falls. That supply-and-demand balance sits at the heart of expression — and until now it has been effectively invisible.",
+  },
+  {
+    h: "Reading charging directly with nanopore aa-tRNA-seq",
+    p: "Andon's measurement is built on nanopore aa-tRNA-seq, a single-molecule method co-invented at CU Anschutz that reads whether individual tRNAs are carrying their amino acid. No bulk averaging and no inference from proxies — the charging state itself, molecule by molecule.",
+  },
+  {
+    h: "From signal to bottleneck",
+    p: "Charging profiles show exactly where codon demand exceeds tRNA supply across a coding sequence, pinpointing the translational bottlenecks that cap yield. The constraints that used to be guessed at become specific, measured, and addressable.",
+  },
+  {
+    h: "A predictive engine for sequence design",
+    p: "Those measurements train models that score and redesign coding sequences for higher, more reliable expression — replacing trial-and-error codon optimization with predictions grounded in direct molecular data.",
+  },
+];
+---
+
+<Layout
+  title="The science"
+  description="How Andon measures charged tRNAs with nanopore aa-tRNA-seq to reveal translational bottlenecks and power predictive sequence design."
+>
+  <PageHero
+    eyebrow="The science"
+    title="Measuring the molecules that gate translation"
+    lead="Protein output is limited by the supply of charged tRNAs. Andon measures that supply directly — turning an invisible constraint into data you can design against."
+  />
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-3xl space-y-14 px-6 py-20">
+      {
+        blocks.map((b) => (
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink md:text-3xl">
+              {b.h}
+            </h2>
+            <p class="mt-3 text-lg leading-relaxed text-muted">{b.p}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <Cta />
+</Layout>

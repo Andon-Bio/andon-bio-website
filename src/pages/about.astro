@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Affiliations from "../components/sections/Affiliations.astro";
+import Cta from "../components/sections/Cta.astro";
+
+// TODO: confirm/replace with the exact copy + real team bios from the Ploy `about` page.
+const blocks = [
+  {
+    h: "Our mission",
+    p: "Translation is where genotype becomes phenotype — and where protein production most often fails. Andon makes it measurable so it can be engineered, not guessed at.",
+  },
+  {
+    h: "Spun out of CU Anschutz",
+    p: "Andon spun out of the University of Colorado Anschutz Medical Campus, building on nanopore aa-tRNA-seq — a single-molecule method for reading tRNA charging co-invented there.",
+  },
+  {
+    h: "What we're building",
+    p: "A measurement layer for protein expression: direct charging data, the analysis that turns it into translational bottlenecks, and a predictive engine that designs better sequences from it.",
+  },
+];
+---
+
+<Layout
+  title="About"
+  description="Andon Bio is a Denver biotech, spun out of CU Anschutz, building the measurement layer for protein expression."
+>
+  <PageHero
+    eyebrow="About"
+    title="Building the measurement layer for protein expression"
+    lead="Andon is a Denver-based biotech, spun out of CU Anschutz, making translation measurable so protein teams can stop guessing."
+  />
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-3xl space-y-14 px-6 py-20">
+      {
+        blocks.map((b) => (
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink md:text-3xl">
+              {b.h}
+            </h2>
+            <p class="mt-3 text-lg leading-relaxed text-muted">{b.p}</p>
+          </div>
+        ))
+      }
+      {/* TODO: add a Team section with real names, roles, and short bios. */}
+    </div>
+  </section>
+
+  <Affiliations />
+  <Cta />
+</Layout>

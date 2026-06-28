@@ -1,0 +1,18 @@
+---
+import { AFFILIATIONS } from "../../site";
+---
+
+<section class="border-b border-line bg-cream">
+  <div class="mx-auto max-w-5xl px-6 py-14 text-center">
+    <p class="font-mono text-xs uppercase tracking-[0.18em] text-faint">
+      Spun out of CU Anschutz · Built with
+    </p>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+      {
+        AFFILIATIONS.map((name) => (
+          <span class="text-sm font-medium text-ink/80">{name}</span>
+        ))
+      }
+    </div>
+  </div>
+</section>

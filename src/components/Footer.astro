@@ -1,0 +1,40 @@
+---
+import { SITE } from "../site";
+
+// Build-time dynamic year — never goes stale.
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy text-paper-muted">
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-14 sm:flex-row sm:items-start sm:justify-between"
+  >
+    <div class="max-w-sm">
+      <div class="flex items-center gap-2.5">
+        <img
+          src="/ptarmigan_ring.svg"
+          alt=""
+          width="28"
+          height="28"
+          class="h-7 w-7"
+          aria-hidden="true"
+        />
+        <span class="font-display text-lg font-bold text-paper">Andon Bio</span>
+      </div>
+      <p class="mt-4 text-sm leading-relaxed">{SITE.tagline}</p>
+    </div>
+
+    <div class="text-sm sm:text-right">
+      <a
+        href={`mailto:${SITE.email}`}
+        class="font-mono text-accent-bright hover:underline"
+      >
+        {SITE.email}
+      </a>
+      <p class="mt-1">{SITE.location}</p>
+      <p class="mt-4 text-paper-muted/70">
+        © {year} Andon Bio. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

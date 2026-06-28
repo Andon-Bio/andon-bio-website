@@ -1,0 +1,25 @@
+---
+import { SITE } from "../../site";
+import Button from "../Button.astro";
+---
+
+<section class="bg-cream">
+  <div class="mx-auto max-w-2xl px-6 py-24 text-center">
+    <h2 class="font-display text-4xl font-bold leading-tight text-ink md:text-5xl">
+      Want early access or to collaborate?
+    </h2>
+    <p class="mx-auto mt-5 max-w-lg text-lg leading-relaxed text-muted">
+      We're partnering with protein engineers and biomanufacturers who want to
+      measure translation instead of guessing at it.
+    </p>
+    <div class="mt-9 flex flex-col items-center gap-4">
+      <Button href={`mailto:${SITE.email}`} variant="pill">Get early access</Button>
+      <a
+        href={`mailto:${SITE.email}`}
+        class="font-mono text-sm text-accent hover:underline"
+      >
+        {SITE.email}
+      </a>
+    </div>
+  </div>
+</section>
