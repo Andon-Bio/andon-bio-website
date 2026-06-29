@@ -3,46 +3,80 @@ import Layout from "../layouts/Layout.astro";
 import Affiliations from "../components/sections/Affiliations.astro";
 import Cta from "../components/sections/Cta.astro";
 
+// Spike Willcocks (ONT co-founder) is staged but gated until his advisory
+// agreement is signed. Flip to true to ship his card — nothing else to change.
+const SHOW_SPIKE = false;
+
 const FOUNDERS = [
   {
-    initials: "LW",
     name: "Laura White",
-    role: "CEO & Co-Founder",
-    bio: "RNA biologist who co-invented aa-tRNA-seq, the nanopore method behind Andon. PhD in Molecular Biology from CU Anschutz, where she led nanopore method development in the Hesselberth Lab.",
+    role: "CEO · Co-Founder · Co-Inventor",
+    photo: "/team/laura-white.jpg",
+    bio: "Co-inventor of aa-tRNA-seq, who led nanopore method development in the Hesselberth Lab at CU Anschutz. Has raised $1.7M in competitive non-dilutive funding since 2023, with six years of life-science strategy consulting across biotools, diagnostics, and biopharma.",
   },
   {
-    initials: "JA",
     name: "Jake Armstrong",
-    role: "Co-Founder",
-    bio: "Co-founder of Andon Bio, working alongside Laura to turn tRNA-charging measurement into a platform for predictive protein expression.",
+    role: "COO · Co-Founder",
+    photo: "/team/jake-armstrong.jpg",
+    bio: "15+ years scaling SaaS and ML platforms (IBM, BryterCX). Leads product, commercial operations, and the ML platform build.",
   },
+  {
+    name: "Jay Hesselberth",
+    role: "Scientific Co-Founder · Co-Inventor",
+    photo: "/team/jay-hesselberth.jpg",
+    bio: "Professor at the University of Colorado Anschutz School of Medicine and Director of the CU RNA Bioscience Initiative. Co-inventor of aa-tRNA-seq.",
+  },
+];
+
+const TEAM = [
+  {
+    name: "Kezia Dobson",
+    role: "Founding Scientist",
+    photo: "/team/kezia-dobson.jpg",
+    bio: "Platform R&D and wet-lab build-out. Joins from the Hesselberth Lab.",
+  },
+  {
+    name: "Aleksandar Radakovic",
+    role: "Co-Inventor · Scientific Advisor",
+    photo: "/team/aleks-radakovic.jpg",
+    bio: "Helen Hay Whitney Fellow in the Thornton Lab at the University of Chicago.",
+  },
+  ...(SHOW_SPIKE
+    ? [
+        {
+          name: "Spike Willcocks",
+          role: "Strategic Advisor",
+          photo: "/team/spike-willcocks.jpg",
+          bio: "Co-founder, Oxford Nanopore Technologies.",
+        },
+      ]
+    : []),
 ];
 ---
 
 <Layout
   title="About"
-  description="Andon Bio is a University of Colorado Anschutz spin-out in Denver, building sequencing-based tools that measure tRNA charging and optimize protein expression."
+  description="Andon Bio is a University of Colorado Anschutz spin-out in Aurora, Colorado, building the measurement layer that makes protein expression predictable — starting with direct measurement of the charged-tRNA supply."
 >
-  {/* Hero */}
+  {/* Hero — thesis / vision lead */}
   <section class="px-6 pt-20 pb-16 md:px-10 md:pt-28 md:pb-20">
     <div class="mx-auto max-w-[46rem]">
       <h1
         class="rise text-balance font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-ink md:text-[3.5rem]"
       >
-        We're making translation measurable
+        Production runs blind. We're building the layer that makes it predictable.
       </h1>
       <p
-        class="rise mt-6 max-w-[38rem] text-lg leading-[1.7] text-muted md:text-xl"
+        class="rise mt-6 max-w-[40rem] text-lg leading-[1.7] text-muted md:text-xl"
         style="animation-delay: 120ms"
       >
         Andon Bio is a University of Colorado Anschutz spin-out, founded in 2025
-        and based in Denver. We build sequencing-based tools that measure tRNA
-        charging and optimize protein expression.
+        and based at the Fitzsimons campus in Aurora, Colorado.
       </p>
     </div>
   </section>
 
-  {/* Story band — asymmetric */}
+  {/* Thesis / vision — plain language, vision register */}
   <section class="border-t border-line/60 px-6 py-20 md:px-10 md:py-24">
     <div
       class="mx-auto grid max-w-[72rem] gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16"
@@ -50,52 +84,62 @@ const FOUNDERS = [
       <h2
         class="rise text-balance font-display text-2xl font-bold leading-[1.15] tracking-[-0.02em] text-ink md:text-[2.25rem]"
       >
-        The measurement layer that translation has been missing.
+        A category of measurement that didn't exist before.
       </h2>
       <div
         class="rise space-y-4 self-end text-lg leading-[1.7] text-muted"
         style="animation-delay: 100ms"
       >
         <p>
-          Protein expression still runs largely on trial and error because the
-          molecular supply of translational resources has been invisible.
-          Andon's nanopore method, developed at CU Anschutz, measures tRNA
-          charging directly.
+          Every protein made at scale — every biologic, enzyme, and reagent —
+          comes out of a living cell asked to manufacture it. Whether a given
+          sequence expresses well in a given system is still, mostly, found out
+          by trial and error.
         </p>
         <p>
-          That data powers a predictive engine that replaces guesswork with real
-          measurements — helping teams improve protein yield and cut costly
-          development cycles.
+          The reason is that the cellular supply chain governing expression was
+          never measurable during production. Andon measures it. That data
+          didn't exist before — and it's the foundation that predictable
+          expression will be built on.
         </p>
       </div>
     </div>
   </section>
 
   {/* Founders */}
-  <section class="px-6 py-8 md:px-10">
+  <section class="px-6 py-12 md:px-10 md:py-16">
     <div class="mx-auto max-w-[72rem]">
       <h2
         class="font-display text-2xl font-bold tracking-[-0.02em] text-ink md:text-3xl"
       >
         Founders
       </h2>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          FOUNDERS.map((f, i) => (
+          FOUNDERS.map((p, i) => (
             <article
-              class="rise rounded-2xl border border-line/70 bg-surface p-7"
+              class="rise overflow-hidden rounded-2xl border border-line/70 bg-surface"
               style={`animation-delay: ${i * 60}ms`}
             >
-              <span class="flex h-14 w-14 items-center justify-center rounded-full bg-accent font-display text-lg font-bold text-ink">
-                {f.initials}
-              </span>
-              <h3 class="mt-5 font-display text-xl font-bold tracking-tight text-ink">
-                {f.name}
-              </h3>
-              <p class="mt-1 font-button text-xs uppercase tracking-[0.16em] text-accent-700">
-                {f.role}
-              </p>
-              <p class="mt-4 text-[0.95rem] leading-[1.65] text-muted">{f.bio}</p>
+              <img
+                src={p.photo}
+                alt={p.name}
+                width="800"
+                height="800"
+                loading="lazy"
+                class="aspect-square w-full object-cover object-top"
+              />
+              <div class="p-6">
+                <h3 class="font-display text-xl font-bold tracking-tight text-ink">
+                  {p.name}
+                </h3>
+                <p class="mt-1 font-button text-xs uppercase tracking-[0.14em] text-accent-700">
+                  {p.role}
+                </p>
+                <p class="mt-4 text-[0.95rem] leading-[1.65] text-muted">
+                  {p.bio}
+                </p>
+              </div>
             </article>
           ))
         }
@@ -103,12 +147,70 @@ const FOUNDERS = [
     </div>
   </section>
 
-  <div class="mt-12 md:mt-20">
+  {/* Founding scientist & advisors */}
+  <section class="px-6 py-12 md:px-10 md:py-16">
+    <div class="mx-auto max-w-[72rem]">
+      <h2
+        class="font-display text-2xl font-bold tracking-[-0.02em] text-ink md:text-3xl"
+      >
+        Founding scientist &amp; advisors
+      </h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          TEAM.map((p, i) => (
+            <article
+              class="rise flex gap-5 rounded-2xl border border-line/70 bg-surface p-6"
+              style={`animation-delay: ${i * 60}ms`}
+            >
+              <img
+                src={p.photo}
+                alt={p.name}
+                width="800"
+                height="800"
+                loading="lazy"
+                class="h-20 w-20 shrink-0 rounded-full object-cover object-top"
+              />
+              <div>
+                <h3 class="font-display text-lg font-bold tracking-tight text-ink">
+                  {p.name}
+                </h3>
+                <p class="mt-1 font-button text-[0.7rem] uppercase tracking-[0.12em] text-accent-700">
+                  {p.role}
+                </p>
+                <p class="mt-3 text-[0.9rem] leading-[1.6] text-muted">
+                  {p.bio}
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Origin & backing */}
+  <section class="px-6 pt-12 md:px-10 md:pt-16">
+    <div class="mx-auto max-w-[72rem]">
+      <h2
+        class="font-display text-2xl font-bold tracking-[-0.02em] text-ink md:text-3xl"
+      >
+        Where we come from
+      </h2>
+      <p class="mt-5 max-w-[44rem] text-lg leading-[1.7] text-muted">
+        The platform began in the Hesselberth Lab at CU Anschutz and is built on
+        a method published in <em>Nature Communications</em>. We're also part of
+        building Colorado's deep-tech ecosystem — proof that foundational biotech
+        can be built here.
+      </p>
+    </div>
+  </section>
+
+  <div class="mt-8 md:mt-12">
     <Affiliations />
   </div>
 
   <Cta
-    heading="Join us in measuring translation"
-    body="Whether you're a protein engineer, a biomanufacturer, or a future teammate — we'd love to hear from you."
+    heading="Building something here — let's talk."
+    body="Whether you express a lot of protein, invest at pre-seed, or want to build with us, we'd like to hear from you."
   />
 </Layout>

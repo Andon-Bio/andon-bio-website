@@ -3,11 +3,11 @@ export const SITE = {
   name: "Andon Bio",
   url: "https://andon.bio",
   email: "hello@andon.bio",
-  location: "Denver, Colorado",
+  location: "Aurora, Colorado",
   tagline:
-    "Making translation measurable — direct tRNA-charging data for predictive protein expression.",
+    "Measuring the cellular supply chain to make protein expression predictable.",
   description:
-    "Andon measures charged tRNAs directly — revealing what limits protein expression and powering predictive sequence design.",
+    "Andon measures the charged-tRNA supply that governs protein expression during production — the missing layer for predicting whether, and how well, a sequence will express.",
 } as const;
 
 export const NAV = [
@@ -16,8 +16,11 @@ export const NAV = [
 ] as const;
 
 export const AFFILIATIONS = [
-  "University of Colorado Anschutz",
+  "CU Innovations",
+  "RNA Bioscience Initiative",
   "Nucleate",
-  "Blueprint by The Engine",
-  "Innosphere Ventures",
+  "Blueprint (Built by MIT / The Engine)",
+  "Innosphere",
+  "Colorado OEDIT",
+  // "Activate Fellowship", // add on 2026-07-14
 ] as const;

@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  heading = "Want early access or to collaborate?",
-  body = "We're partnering with protein engineers and biomanufacturers who want to measure translation instead of guessing at it.",
+  heading = "See what's actually happening in your system",
+  body = "If you express a lot of protein, the charged-tRNA supply behind it has never been visible. We'd like to show you what we'd see in yours — let's talk.",
 } = Astro.props;
 ---
 
@@ -24,7 +24,7 @@ const {
       {body}
     </p>
     <div class="mt-9 flex flex-col items-center gap-4">
-      <Button href={`mailto:${SITE.email}`} size="lg">Get early access</Button>
+      <Button href={`mailto:${SITE.email}`} size="lg">Let's talk</Button>
       <a
         href={`mailto:${SITE.email}`}
         class="font-button text-sm tracking-wide text-accent-700 transition-colors hover:text-accent-800"

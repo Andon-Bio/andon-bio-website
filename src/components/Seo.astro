@@ -15,7 +15,7 @@ const {
 
 const fullTitle = title
   ? `${title} | ${SITE.name}`
-  : `${SITE.name} — Making translation measurable`;
+  : `${SITE.name} — Measuring the cellular supply chain behind protein expression`;
 
 const base = Astro.site ?? new URL(SITE.url);
 const canonical = new URL(Astro.url.pathname, base).href;
@@ -30,7 +30,7 @@ const jsonLd = {
   description: SITE.description,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Denver",
+    addressLocality: "Aurora",
     addressRegion: "CO",
     addressCountry: "US",
   },

@@ -6,17 +6,17 @@ const CALLOUTS = [
   {
     label: "Measure",
     sub: "Charged tRNAs, read directly",
-    pos: "left-[-7rem] top-[14%] items-end text-right",
+    pos: "left-[-7.5rem] top-[16%] items-end text-right",
   },
   {
     label: "Reveal",
-    sub: "Translational bottlenecks",
+    sub: "Where supply fails demand",
     pos: "right-[-7.5rem] top-[46%] items-start text-left",
   },
   {
     label: "Predict",
-    sub: "Better sequence design",
-    pos: "bottom-[8%] left-[-5rem] items-end text-right",
+    sub: "Toward predictable expression",
+    pos: "left-[-7.5rem] bottom-[16%] items-end text-right",
   },
 ];
 ---
@@ -36,20 +36,21 @@ const CALLOUTS = [
     <h1
       class="rise text-balance font-display text-4xl font-extrabold leading-[1.04] tracking-[-0.03em] text-ink md:text-6xl"
     >
-      Making translation measurable
+      Protein design is racing ahead of protein production.
     </h1>
     <p
-      class="rise mx-auto mt-6 max-w-[36rem] text-lg leading-[1.6] text-muted md:text-xl"
+      class="rise mx-auto mt-6 max-w-[38rem] text-lg leading-[1.6] text-muted md:text-xl"
       style="animation-delay: 120ms"
     >
-      Andon measures charged tRNAs directly — revealing what limits protein
-      expression and powering predictive sequence design.
+      We can design new proteins faster than we can predict whether they'll
+      express. Andon measures the cellular supply state that determines
+      expression — the layer that's been missing.
     </p>
     <div
       class="rise mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
       style="animation-delay: 240ms"
     >
-      <Button href={`mailto:${SITE.email}`} size="lg">Get early access</Button>
+      <Button href={`mailto:${SITE.email}`} size="lg">Let's talk</Button>
       <Button href="#how" variant="link" size="lg">See how it works</Button>
     </div>
   </div>
@@ -71,7 +72,7 @@ const CALLOUTS = [
     <div class="pointer-events-none absolute inset-0 hidden lg:block">
       {
         CALLOUTS.map((c) => (
-          <div class={`absolute flex w-[10rem] flex-col ${c.pos}`}>
+          <div class={`absolute flex w-[11rem] flex-col ${c.pos}`}>
             <div class="mb-2 flex items-center gap-2">
               <span class="h-1.5 w-1.5 rounded-full bg-accent" />
               <span class="h-px w-10 bg-accent/50" />
