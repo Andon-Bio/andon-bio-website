@@ -17,3 +17,6 @@ pnpm-debug.log*
 # editors
 .vscode/
 .idea/
+
+# Confidential source material (deck, briefs, source headshots) — keep local
+reference-content/
