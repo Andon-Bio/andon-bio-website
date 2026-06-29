@@ -1,24 +1,7 @@
 ---
-import { SITE } from "../../site";
-import Button from "../Button.astro";
-
-const CALLOUTS = [
-  {
-    label: "Measure",
-    sub: "Charged tRNAs, read directly",
-    pos: "left-[-7.5rem] top-[16%] items-end text-right",
-  },
-  {
-    label: "Reveal",
-    sub: "Where supply fails demand",
-    pos: "right-[-7.5rem] top-[46%] items-start text-left",
-  },
-  {
-    label: "Predict",
-    sub: "Toward predictable expression",
-    pos: "left-[-7.5rem] bottom-[16%] items-end text-right",
-  },
-];
+// HOME hero — text left, the unlabeled ring/wheel right. No labels on the wheel
+// (Measure/Reveal/Predict is retired as a labeled device), no buttons.
+// Voice: "tRNA" never appears on Home.
 ---
 
 <section
@@ -28,73 +11,41 @@ const CALLOUTS = [
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 -z-10"
-    style="background: radial-gradient(60% 55% at 50% 8%, oklch(0.78 0.105 85 / 0.16), transparent 70%);"
+    style="background: radial-gradient(55% 50% at 78% 18%, oklch(0.78 0.105 85 / 0.16), transparent 70%);"
   >
   </div>
 
-  <div class="mx-auto max-w-[52rem] text-center">
-    <h1
-      class="rise text-balance font-display text-4xl font-extrabold leading-[1.04] tracking-[-0.03em] text-ink md:text-6xl"
-    >
-      Protein design is racing ahead of protein production.
-    </h1>
-    <p
-      class="rise mx-auto mt-6 max-w-[38rem] text-lg leading-[1.6] text-muted md:text-xl"
-      style="animation-delay: 120ms"
-    >
-      We can design new proteins faster than we can predict whether they'll
-      express. Andon measures the cellular supply state that determines
-      expression — the layer that's been missing.
-    </p>
-    <div
-      class="rise mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
-      style="animation-delay: 240ms"
-    >
-      <Button href={`mailto:${SITE.email}`} size="lg">Let's talk</Button>
-      <Button href="#how" variant="link" size="lg">See how it works</Button>
-    </div>
-  </div>
-
-  {/* Hero artifact: the rotating tRNA ring with measurement callouts */}
   <div
-    class="rise-scale relative mx-auto mt-16 flex max-w-[40rem] items-center justify-center md:mt-20"
-    style="animation-delay: 300ms"
+    class="mx-auto grid max-w-[78rem] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
   >
-    <img
-      src="/andon_ring.svg"
-      alt="The 20 amino acids arranged as a tRNA charging ring"
-      width="416"
-      height="416"
-      class="andon-ring w-[18rem] md:w-[26rem]"
-    />
-
-    {/* Callouts — absolute around the ring on lg */}
-    <div class="pointer-events-none absolute inset-0 hidden lg:block">
-      {
-        CALLOUTS.map((c) => (
-          <div class={`absolute flex w-[11rem] flex-col ${c.pos}`}>
-            <div class="mb-2 flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span class="h-px w-10 bg-accent/50" />
-            </div>
-            <span class="font-display text-sm font-bold text-ink">{c.label}</span>
-            <span class="mt-1 text-xs leading-snug text-muted">{c.sub}</span>
-          </div>
-        ))
-      }
+    <div>
+      <h1
+        class="rise text-balance font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.03em] text-ink md:text-5xl"
+      >
+        What if you could tell which protein sequences would express well and
+        which would fail, before you ever set foot in the lab?
+      </h1>
+      <p
+        class="rise mt-7 max-w-[34rem] text-lg leading-[1.7] text-muted md:text-xl"
+        style="animation-delay: 120ms"
+      >
+        Today, every new protein design is tested blind. Whether a sequence
+        expresses at all, and how much it yields, comes down to trial and error.
+      </p>
     </div>
-  </div>
 
-  {/* Callouts — stacked row below the ring on small screens */}
-  <div class="mx-auto mt-12 grid max-w-[34rem] grid-cols-3 gap-4 lg:hidden">
-    {
-      CALLOUTS.map((c) => (
-        <div class="flex flex-col items-center text-center">
-          <span class="mb-2 h-1.5 w-1.5 rounded-full bg-accent" />
-          <span class="font-display text-sm font-bold text-ink">{c.label}</span>
-          <span class="mt-1 text-xs leading-snug text-muted">{c.sub}</span>
-        </div>
-      ))
-    }
+    {/* Hero artifact: the slowly rotating ring — unlabeled brand imagery */}
+    <div
+      class="rise-scale flex items-center justify-center lg:justify-end"
+      style="animation-delay: 200ms"
+    >
+      <img
+        src="/andon_ring.svg"
+        alt="The twenty amino acids arranged as a ring"
+        width="416"
+        height="416"
+        class="andon-ring w-[16rem] sm:w-[20rem] md:w-[26rem]"
+      />
+    </div>
   </div>
 </section>

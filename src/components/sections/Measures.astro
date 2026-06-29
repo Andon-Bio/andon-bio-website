@@ -1,0 +1,43 @@
+---
+// HOME Beat 2 — what Andon does. Headline + body, standalone link line beneath.
+const ARROW = `<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>`;
+---
+
+<section class="border-t border-line/60 px-6 py-20 md:px-10 md:py-28">
+  <div class="mx-auto max-w-[60rem]">
+    <h2
+      class="rise text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.75rem]"
+    >
+      Andon measures the supply, while the cell is making protein.
+    </h2>
+    <p
+      class="rise mt-6 max-w-[44rem] text-lg leading-[1.7] text-muted md:text-xl"
+      style="animation-delay: 100ms"
+    >
+      We read the cell's internal supply state directly — the layer that's been
+      invisible to every existing tool. It works in the systems proteins are
+      actually made in, from microbes to mammalian cells, and it speaks to both
+      questions that matter: whether a sequence will express, and how much you'll
+      get.
+    </p>
+    <a
+      href="/science"
+      class="rise mt-8 inline-flex items-center gap-2 font-button text-sm tracking-wide text-accent-700 transition-colors hover:text-accent-800"
+      style="animation-delay: 180ms"
+    >
+      The science
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        set:html={ARROW}
+      />
+    </a>
+  </div>
+</section>

@@ -1,257 +1,267 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Cta from "../components/sections/Cta.astro";
-import Differentiation from "../components/sections/Differentiation.astro";
 import Button from "../components/Button.astro";
-import { SITE } from "../site";
+import { PAPER, LINKS } from "../site";
 
-const ic = {
-  flask: `<path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/>`,
-  dna: `<path d="m10 16 1.5 1.5"/><path d="m14 8-1.5-1.5"/><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"/><path d="m16.5 10.5 1 1"/><path d="m17 6-2.891-2.891"/><path d="M2 15c6.667-6 13.333 0 20-6"/><path d="m20 9 .891.891"/><path d="M3.109 14.109 4 15"/><path d="m6.5 12.5 1 1"/><path d="m7 18-2.891-2.891"/><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"/>`,
-  amino: `<circle cx="12" cy="12" r="9"/><path d="M12 7v10"/><path d="M7.5 9.5 12 12l4.5-2.5"/>`,
-  gauge: `<path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/>`,
-};
-
-// Mechanism — deck slides 4-5. What charging is, why it governs expression.
-const MECHANISM = [
-  {
-    title: "Each tRNA carries one amino acid",
-    body: "Every tRNA delivers one specific amino acid to the ribosome, which reads an mRNA codon by codon to assemble a protein.",
-  },
-  {
-    title: "Only charged tRNAs can build protein",
-    body: "A charged (aminoacylated) tRNA carries its cargo; an empty one stalls the ribosome. Whether a codon can be translated depends on the supply of the right charged tRNA at that moment.",
-  },
-  {
-    title: "Overexpression strains the supply",
-    body: "Pushing a cell to overproduce one protein puts asymmetric load on this supply chain, depleting specific charged tRNAs. That supply state has been invisible during production.",
-  },
-];
-
-// What one read carries. Rule 3: amino-acid identity stated ONCE, as a property
-// of the read — never a model, never QC.
-const READOUTS = [
-  { icon: ic.flask, label: "Charging state", detail: "Charged vs. uncharged, per tRNA, at single-molecule resolution." },
-  { icon: ic.dna, label: "Sequence & modifications", detail: "tRNA identity and RNA modifications resolved from the same read." },
-  { icon: ic.amino, label: "Amino-acid identity", detail: "The same read resolves which amino acid the tRNA carries, not just whether it's charged." },
-  { icon: ic.gauge, label: "Supply vs. demand", detail: "Measured tRNA availability mapped against the codon composition of a sequence." },
-];
+const ARROW = `<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>`;
 ---
 
 <Layout
   title="The science"
-  description="How Andon measures the charged-tRNA supply behind protein expression with single-molecule aa-tRNA-seq — the published, cross-organism method that makes the cellular supply chain visible during production."
+  description="Every protein draws on a supply of charged tRNAs. Andon measures that supply directly — single-molecule, published in Nature Communications, and validated from bacteria to mammalian cells."
 >
-  {/* Hero — text-led */}
+  {/* Hero */}
   <section class="px-6 pt-20 pb-16 md:px-10 md:pt-28 md:pb-20">
-    <div class="mx-auto max-w-[44rem]">
+    <div class="mx-auto max-w-[46rem]">
       <h1
         class="rise text-balance font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-ink md:text-[3.5rem]"
       >
-        The measurement layer behind protein expression
+        The supply chain behind every protein.
       </h1>
       <p
-        class="rise mt-6 max-w-[38rem] text-lg leading-[1.7] text-muted md:text-xl"
+        class="rise mt-6 max-w-[40rem] text-lg leading-[1.7] text-muted md:text-xl"
         style="animation-delay: 120ms"
       >
-        Protein output is limited by translation — yet the supply of charged
-        tRNAs has never been directly measurable during production. Andon
-        measures it directly. That measurement is the foundation we're building
-        prediction on.
+        Every protein a cell makes draws on a supply of charged tRNAs: the
+        molecules that deliver amino acids to the ribosome. Andon measures that
+        supply directly. Here's what it is, how we read it, and what we've found.
       </p>
-      <div
-        class="rise mt-10 h-px w-24 bg-accent"
-        style="animation-delay: 220ms"
-      >
+      <div class="rise mt-10 h-px w-24 bg-accent" style="animation-delay: 220ms">
       </div>
     </div>
   </section>
 
-  {/* Mechanism */}
+  {/* Beat 1 — THE MECHANISM */}
   <section class="px-6 py-12 md:px-10 md:py-16">
-    <div class="mx-auto max-w-[72rem]">
-      <span class="font-button text-xs uppercase tracking-[0.18em] text-accent-700">
+    <div class="mx-auto max-w-[46rem]">
+      <span
+        class="font-button text-xs uppercase tracking-[0.18em] text-accent-700"
+      >
         The mechanism
       </span>
-      <h2 class="mt-3 max-w-[40rem] text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]">
-        tRNAs are the cell's supply chain.
+      <h2
+        class="mt-3 text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
+      >
+        Protein production runs on a supply most people never see.
       </h2>
-      <p class="mt-5 max-w-[38rem] text-lg leading-[1.7] text-muted">
-        Expression isn't governed by the gene alone — it's governed by whether
-        the cell can keep the ribosome supplied as it builds.
-      </p>
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {
-          MECHANISM.map((m, i) => (
-            <article
-              class="rise rounded-2xl border border-line/70 bg-surface p-7"
-              style={`animation-delay: ${i * 70}ms`}
-            >
-              <span class="font-display text-sm font-bold text-accent-700">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 class="mt-3 font-display text-lg font-bold tracking-tight text-ink">
-                {m.title}
-              </h3>
-              <p class="mt-3 text-[0.95rem] leading-[1.65] text-muted">{m.body}</p>
-            </article>
-          ))
-        }
+      <div class="mt-6 space-y-5 text-lg leading-[1.75] text-muted">
+        <p>
+          Proteins are built from amino acids, assembled in a precise order by
+          the ribosome. The molecules that deliver those amino acids are tRNAs:
+          each one carries a specific amino acid to the ribosome at the moment
+          it's needed. A tRNA loaded with its amino acid is charged; an empty one
+          is not. Production only moves as fast as the right charged tRNAs arrive.
+          When a cell is pushed to overproduce a protein, demand for certain
+          charged tRNAs can outrun supply, and the ribosome stalls, waiting.
+        </p>
+        <p>
+          That supply isn't fixed. It rises and falls during production, in ways
+          no one could see.
+        </p>
       </div>
     </div>
   </section>
 
-  {/* Method — aa-tRNA-seq, with the capture/nanopore schematic */}
+  {/* Beat 2 — THE METHOD. Body left, schematic right. */}
   <section class="px-6 py-12 md:px-10 md:py-16">
-    <div class="mx-auto grid max-w-[72rem] items-center gap-10 lg:grid-cols-2 lg:gap-16">
+    <div
+      class="mx-auto grid max-w-[78rem] items-center gap-10 lg:grid-cols-[1fr_0.85fr] lg:gap-16"
+    >
       <div>
-        <span class="font-button text-xs uppercase tracking-[0.18em] text-accent-700">
-          The method
+        <span
+          class="font-button text-xs uppercase tracking-[0.18em] text-accent-700"
+        >
+          The chemistry
         </span>
-        <h2 class="mt-3 text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]">
-          aa-tRNA-seq reads charging directly.
+        <h2
+          class="mt-3 text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
+        >
+          We keep the signal everything else throws away.
         </h2>
-        <ul class="mt-6 space-y-4 text-lg leading-[1.7] text-muted">
-          <li>
-            A capture chemistry preserves the amino acid on each tRNA through
-            sequencing — the technical step that makes charged and uncharged
-            tRNA distinguishable in a single read.
-          </li>
-          <li>
-            Reads run on nanopore direct RNA sequencing (Oxford Nanopore), at
-            single-molecule resolution on a commercial platform.
-          </li>
-          <li>
-            Matched uninduced and induced samples give a per-anticodon picture of
-            how the charged-tRNA pool shifts under production load.
-          </li>
-        </ul>
-      </div>
-      <figure class="rise" style="animation-delay: 120ms">
-        <div class="rounded-2xl border border-line/70 bg-white p-5 md:p-7">
-          {/* Mockup: extracted from the technical brief (Fig 1). Swap for a clean export. */}
-          <img
-            src="/figures/aa-trna-seq-schematic.png"
-            alt="aa-tRNA-seq schematic: (A) covalent capture distinguishes charged from uncharged tRNA, (B) nanopore direct RNA sequencing, (C) matched uninduced and induced samples yield a per-anticodon charging profile."
-            width="2070"
-            height="470"
-            class="h-auto w-full"
-          />
+        <div class="mt-6 space-y-5 text-lg leading-[1.7] text-muted">
+          <p>
+            The amino acid on a charged tRNA is the signal that it's ready to
+            build protein, and it's easily lost: it falls off on its own, and
+            standard sequencing prep strips off whatever remains. Either way, the
+            charge information is gone before anything gets read.
+          </p>
+          <p>
+            Our chemistry preserves it instead, holding the amino acid in place so
+            each tRNA can be sequenced with its charge intact. Every molecule is
+            then read individually by nanopore, and for every tRNA, we see whether
+            it was charged or empty.
+          </p>
+          <p>
+            The same read resolves three things at once: the tRNA's sequence, its
+            modifications, and which amino acid it carried.
+          </p>
         </div>
-        <figcaption class="mt-3 text-sm leading-[1.6] text-faint">
-          aa-tRNA-seq distinguishes charged from uncharged tRNA (A) by capturing
-          the amino acid, reads it by nanopore direct RNA sequencing (B), and
-          compares matched uninduced and induced samples to profile how supply
-          shifts under production load (C).
-        </figcaption>
+      </div>
+      {/* SCHEMATIC SLOT — graphic to be provided by Laura. Drop the <img> / SVG
+          (3-step: amino acid lost → locked on → nanopore read) in here. */}
+      <figure class="rise" style="animation-delay: 120ms">
+        <div
+          class="flex aspect-[4/3] w-full items-center justify-center rounded-2xl border border-dashed border-line bg-surface/50 p-8 text-center"
+        >
+          <span
+            class="font-button text-xs uppercase tracking-[0.16em] text-faint"
+          >
+            Schematic — to be provided
+          </span>
+        </div>
       </figure>
     </div>
   </section>
 
-  {/* What we read from a single molecule — dark readout panel */}
-  <section
-    class="mt-12 bg-navy px-6 py-20 text-paper md:mt-16 md:px-10 md:py-28"
-  >
-    <div class="mx-auto max-w-[72rem]">
+  {/* Beat 3 — THE FINDING. Copy only, no figure. */}
+  <section class="px-6 py-12 md:px-10 md:py-16">
+    <div class="mx-auto max-w-[46rem]">
+      <span
+        class="font-button text-xs uppercase tracking-[0.18em] text-accent-700"
+      >
+        The finding
+      </span>
       <h2
-        class="max-w-[36rem] text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] md:text-[2.5rem]"
+        class="mt-3 text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
       >
-        What we read from a single molecule
+        What we've found: charging shifts during production.
       </h2>
-      <p class="mt-4 max-w-[34rem] text-lg leading-[1.7] text-paper-muted">
-        One nanopore read carries more than a sequence. aa-tRNA-seq resolves the
-        functional state of a tRNA, not just its identity.
-      </p>
-      <div
-        class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line-dark bg-line-dark sm:grid-cols-2"
-      >
-        {
-          READOUTS.map((r) => (
-            <div class="flex gap-4 bg-navy p-7">
-              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line-dark bg-navy-soft text-accent">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={r.icon} />
-              </span>
-              <div>
-                <h3 class="font-display text-lg font-bold tracking-tight">
-                  {r.label}
-                </h3>
-                <p class="mt-1.5 text-[0.95rem] leading-[1.6] text-paper-muted">
-                  {r.detail}
-                </p>
-              </div>
-            </div>
-          ))
-        }
+      <div class="mt-6 space-y-5 text-lg leading-[1.75] text-muted">
+        <p>
+          We measured tRNA charging in cells overproducing protein, and found
+          that it shifts as production runs, in patterns specific to the protein
+          being made. The supply isn't a fixed background the cell draws on
+          evenly. It responds to what's being built, running short for some tRNAs
+          while others hold steady.
+        </p>
+        <p>
+          This is a layer of protein production that has never been measured
+          before, and it's the foundation we're building prediction on.
+        </p>
       </div>
     </div>
   </section>
 
-  {/* Differentiation — the moat (shared with Home) */}
-  <Differentiation />
-
-  {/* Evidence — the publication */}
+  {/* Beat 4 — the published / patent-pending method. Publication card. */}
   <section class="border-t border-line/60 px-6 py-20 md:px-10 md:py-28">
     <div class="mx-auto max-w-[72rem]">
-      <span class="font-button text-xs uppercase tracking-[0.18em] text-accent-700">
-        The proof
+      <span
+        class="font-button text-xs uppercase tracking-[0.18em] text-accent-700"
+      >
+        The method
       </span>
-      <h2 class="mt-3 max-w-[40rem] text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]">
-        Published, peer-reviewed, and validated across organisms.
+      <h2
+        class="mt-3 text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
+      >
+        Published and patent-pending.
       </h2>
+      <p class="mt-5 max-w-[42rem] text-lg leading-[1.7] text-muted">
+        <em>Nature Communications</em>, 2025. Now validated from microbial to
+        mammalian systems. WO/2025/250601.
+      </p>
 
-      <article class="mt-10 rounded-2xl border border-line/70 bg-surface p-7 md:p-9">
-        <div class="flex flex-wrap items-center gap-3">
-          <span class="rounded-full bg-accent/15 px-3 py-1 font-button text-xs uppercase tracking-[0.14em] text-accent-700">
-            Open access
-          </span>
-          <span class="font-button text-xs uppercase tracking-[0.14em] text-faint">
-            Nature Communications · 2025
-          </span>
-        </div>
-        <h3 class="mt-5 font-display text-xl font-bold leading-snug tracking-tight text-ink md:text-2xl">
-          Nanopore sequencing of intact aminoacylated tRNAs
-        </h3>
-        <p class="mt-4 text-[0.95rem] leading-[1.7] text-muted">
-          White LK, Radakovic A, Sajek MP, Dobson K, Riemondy KA, del Pozo S,
-          Szostak JW, Hesselberth JR.
-          <span class="text-faint"> Nature Communications 16, 7781 (2025).</span>
-        </p>
-        <div class="mt-6">
-          <Button
-            href="https://www.nature.com/articles/s41467-025-62545-9"
-            variant="secondary"
-            size="default"
+      <article
+        class="mt-10 overflow-hidden rounded-2xl border border-line/70 bg-surface"
+      >
+        <div class="flex flex-col gap-7 p-7 sm:flex-row sm:gap-8 md:p-9">
+          <a
+            href={PAPER.url}
             target="_blank"
             rel="noopener"
+            class="group shrink-0 self-start"
+            aria-label="Read the paper — opens the article in Nature Communications"
           >
-            Read the paper
-          </Button>
+            <img
+              src="/figures/paper-natcomms.jpg"
+              alt="First page of the paper in Nature Communications"
+              width="720"
+              height="957"
+              loading="lazy"
+              class="w-36 rounded-lg border border-line/70 shadow-sm transition-transform duration-200 group-hover:-translate-y-0.5 sm:w-44"
+            />
+          </a>
+          <div>
+            <div class="flex flex-wrap items-center gap-3">
+              <span
+                class="rounded-full bg-accent/15 px-3 py-1 font-button text-xs uppercase tracking-[0.14em] text-accent-700"
+              >
+                Open access
+              </span>
+              <span
+                class="font-button text-xs uppercase tracking-[0.14em] text-faint"
+              >
+                {PAPER.journal} · {PAPER.year}
+              </span>
+            </div>
+            <h3
+              class="mt-5 font-display text-xl font-bold leading-snug tracking-tight text-ink md:text-2xl"
+            >
+              {PAPER.title}
+            </h3>
+            <p class="mt-4 text-[0.95rem] leading-[1.7] text-muted">
+              {PAPER.authors}
+              <span class="text-faint"> {PAPER.citation}</span>
+            </p>
+            <div class="mt-6">
+              <Button
+                href={PAPER.url}
+                variant="secondary"
+                size="default"
+                target="_blank"
+                rel="noopener"
+              >
+                Read the paper
+              </Button>
+            </div>
+          </div>
         </div>
       </article>
-
-      <p class="mt-8 max-w-[40rem] text-lg leading-[1.7] text-muted">
-        aa-tRNA-seq has been demonstrated across organisms — from
-        <em> E. coli</em> to yeast to mammalian cells — establishing that the
-        charged-tRNA pool can be read directly in the systems where proteins are
-        made.
-      </p>
     </div>
   </section>
 
-  {/* London Calling talk */}
-  <section class="px-6 pb-20 md:px-10 md:pb-28">
+  {/* Beat 5 — vision + talk. Dark band. */}
+  <section class="bg-navy px-6 py-20 text-paper md:px-10 md:py-28">
     <div class="mx-auto max-w-[60rem]">
-      <span class="font-button text-xs uppercase tracking-[0.18em] text-accent-700">
-        Go deeper
-      </span>
-      <h2 class="mt-3 text-balance font-display text-2xl font-bold leading-[1.15] tracking-[-0.02em] text-ink md:text-3xl">
-        The method, presented at London Calling
+      <h2
+        class="text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] md:text-[2.5rem]"
+      >
+        From measurements to models.
       </h2>
-      <div class="mt-7 aspect-video w-full overflow-hidden rounded-2xl border border-line/70 bg-surface">
+      <p class="mt-5 max-w-[42rem] text-lg leading-[1.7] text-paper-muted">
+        Charging shifts in protein-specific ways, which means it's learnable.
+        Measure it across enough proteins and systems, and the rules connecting a
+        sequence to how well a cell can build it come into view. That's the path
+        from measurement to prediction.
+      </p>
+
+      <a
+        href={LINKS.londonCallingWatch}
+        target="_blank"
+        rel="noopener"
+        class="mt-8 inline-flex items-center gap-2 font-button text-sm tracking-wide text-accent transition-colors hover:text-accent-400"
+      >
+        The method, presented at London Calling
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          set:html={ARROW}
+        />
+      </a>
+      <div
+        class="mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-line-dark bg-navy-soft"
+      >
         <iframe
           class="h-full w-full"
-          src="https://www.youtube.com/embed/d8NISg6Yfbk"
-          title="aa-tRNA-seq presented at London Calling"
+          src={LINKS.londonCallingEmbed}
+          title="The method, presented at London Calling"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
@@ -260,38 +270,9 @@ const READOUTS = [
     </div>
   </section>
 
-  {/* Predict — direction tense only */}
-  <section class="bg-navy px-6 py-20 text-paper md:px-10 md:py-28">
-    <div class="mx-auto max-w-[44rem]">
-      <span class="font-button text-xs uppercase tracking-[0.18em] text-accent">
-        Where this is going
-      </span>
-      <h2 class="mt-3 text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] md:text-[2.5rem]">
-        From measurement to predictable expression.
-      </h2>
-      <div class="mt-6 space-y-4 text-lg leading-[1.7] text-paper-muted">
-        <p>
-          Today, Andon measures the charged-tRNA supply during production. As
-          that measurement scales across proteins and systems, it will become the
-          foundation for predicting whether — and how well — a sequence will
-          express, and eventually for designing sequences against real
-          translational capacity.
-        </p>
-        <p>
-          That's the bet: measure the supply chain, and expression stops being a
-          blind bet.
-        </p>
-      </div>
-      <div class="mt-8">
-        <Button href={`mailto:${SITE.email}`} variant="amber" size="lg">
-          Let's talk
-        </Button>
-      </div>
-    </div>
-  </section>
-
   <Cta
-    heading="Bring this measurement to your system"
-    body="If you express a lot of protein, the charged-tRNA supply behind it has never been visible. We'd like to show you what we'd see in yours — let's talk."
+    heading="Bring this measurement to your system."
+    body="If you express a lot of protein, the supply behind it has never been visible. Let's take a look."
+    cta="Let's take a look"
   />
 </Layout>

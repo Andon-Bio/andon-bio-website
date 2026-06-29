@@ -5,29 +5,59 @@ import Button from "../Button.astro";
 interface Props {
   heading?: string;
   body?: string;
+  cta?: string;
+  tone?: "light" | "dark";
 }
 
 const {
-  heading = "See what's actually happening in your system",
-  body = "If you express a lot of protein, the charged-tRNA supply behind it has never been visible. We'd like to show you what we'd see in yours — let's talk.",
+  heading = "See what's actually happening inside your system.",
+  body = "Every protein makes its own demands on your cells' supply chain. That's never been visible.",
+  cta = "Let's take a look",
+  tone = "light",
 } = Astro.props;
+
+const dark = tone === "dark";
 ---
 
-<section class="px-6 py-24 text-center md:px-10 md:py-32">
+<section
+  class:list={[
+    "px-6 py-24 text-center md:px-10 md:py-32",
+    dark ? "bg-navy text-paper" : "",
+  ]}
+>
   <div class="rise mx-auto max-w-[42rem]">
     <h2
-      class="text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl"
+      class:list={[
+        "text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] md:text-5xl",
+        dark ? "text-paper" : "text-ink",
+      ]}
     >
       {heading}
     </h2>
-    <p class="mx-auto mt-5 max-w-[34rem] text-lg leading-[1.7] text-muted">
+    <p
+      class:list={[
+        "mx-auto mt-5 max-w-[34rem] text-lg leading-[1.7]",
+        dark ? "text-paper-muted" : "text-muted",
+      ]}
+    >
       {body}
     </p>
     <div class="mt-9 flex flex-col items-center gap-4">
-      <Button href={`mailto:${SITE.email}`} size="lg">Let's talk</Button>
+      <Button
+        href={`mailto:${SITE.email}`}
+        variant={dark ? "amber" : "primary"}
+        size="lg"
+      >
+        {cta}
+      </Button>
       <a
         href={`mailto:${SITE.email}`}
-        class="font-button text-sm tracking-wide text-accent-700 transition-colors hover:text-accent-800"
+        class:list={[
+          "font-button text-sm tracking-wide transition-colors",
+          dark
+            ? "text-accent hover:text-accent-400"
+            : "text-accent-700 hover:text-accent-800",
+        ]}
       >
         {SITE.email}
       </a>

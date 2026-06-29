@@ -1,0 +1,60 @@
+---
+// ABOUT — "Supported by". Tiered TEXT LINKS (not logos), ranked by prominence.
+// Top tier larger/first; second tier smaller. Data + the Activate embargo gate
+// live in site.ts (SUPPORTERS / SHOW_ACTIVATE).
+import { SUPPORTERS } from "../../site";
+---
+
+<section class="border-y border-line/60 px-6 py-14 md:px-10">
+  <div class="rise mx-auto max-w-[72rem] text-center">
+    <p class="font-button text-xs uppercase tracking-[0.18em] text-muted">
+      Supported by
+    </p>
+
+    {/* Top tier */}
+    <div
+      class="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:gap-x-10"
+    >
+      {
+        SUPPORTERS.top.map((s) =>
+          s.href ? (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener"
+              class="font-display text-lg font-bold tracking-tight text-ink underline-offset-4 transition-colors hover:text-accent-700 hover:underline md:text-xl"
+            >
+              {s.label}
+            </a>
+          ) : (
+            <span class="font-display text-lg font-bold tracking-tight text-ink md:text-xl">
+              {s.label}
+            </span>
+          ),
+        )
+      }
+    </div>
+
+    {/* Second tier */}
+    <div
+      class="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-8"
+    >
+      {
+        SUPPORTERS.second.map((s) =>
+          s.href ? (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener"
+              class="text-sm text-muted underline-offset-4 transition-colors hover:text-ink hover:underline md:text-base"
+            >
+              {s.label}
+            </a>
+          ) : (
+            <span class="text-sm text-muted md:text-base">{s.label}</span>
+          ),
+        )
+      }
+    </div>
+  </div>
+</section>
