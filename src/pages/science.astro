@@ -28,10 +28,10 @@ const ARROW = `<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>`;
         >
           Every protein a cell makes draws on a supply of charged tRNAs: the
           molecules that carry amino acids to the ribosome. Production moves only
-          as fast as the right charged tRNAs arrive, and when a cell is pushed to
+          as fast as the right charged tRNAs arrive. When a cell is pushed to
           overproduce a protein, demand can outrun supply and the ribosome
-          stalls. That supply rises and falls as the cell works, and until now no
-          one could see it. Andon measures it directly.
+          stalls, waiting on a resource no one could see. Andon measures it
+          directly.
         </p>
         <div class="rise mt-8 h-px w-24 bg-accent" style="animation-delay: 220ms">
         </div>
@@ -109,7 +109,9 @@ const ARROW = `<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>`;
             </h3>
             <p class="mt-4 text-[0.95rem] leading-[1.7] text-muted">
               {PAPER.authors}
-              <span class="text-faint"> {PAPER.citation} Open access.</span>
+              <span class="mt-1 block text-faint"
+                >{PAPER.citation} Open access.</span
+              >
             </p>
             <div class="mt-6">
               <Button
