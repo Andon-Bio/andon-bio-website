@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Ring from "../components/Ring.astro";
 import SupportedBy from "../components/sections/SupportedBy.astro";
-import Cta from "../components/sections/Cta.astro";
 import { LINKS } from "../site";
 
 // Spike Willcocks (ONT co-founder) is staged but GATED until his advisory
@@ -16,7 +16,7 @@ const TEAM = [
     name: "Laura White, PhD",
     role: "CEO, Co-Founder, Co-Inventor",
     photo: "/team/laura-white.jpg",
-    bio: "Co-invented aa-tRNA-seq and led its development in the Hesselberth Lab. PhD in Molecular Biology. Strategy consultant turned tRNA biologist; experimental and computational methods development.",
+    bio: "Co-invented aa-tRNA-seq and led its development in the Hesselberth Lab. PhD in molecular biology. Strategy consultant turned tRNA biologist, working across experimental and computational method development.",
   },
   {
     name: "Jake Armstrong, MBA",
@@ -28,19 +28,19 @@ const TEAM = [
     name: "Jay Hesselberth, PhD",
     role: "Scientific Co-Founder, Co-Inventor",
     photo: "/team/jay-hesselberth.jpg",
-    bio: "Professor at the University of Colorado School of Medicine and Director of the CU RNA Bioscience Initiative. Co-invented aa-tRNA-seq.",
+    bio: "Co-invented aa-tRNA-seq. Professor at the University of Colorado School of Medicine and Director of the CU RNA Bioscience Initiative.",
   },
   {
     name: "Kezia Dobson",
     role: "Founding Scientist",
     photo: "/team/kezia-dobson.jpg",
-    bio: "Leads platform R&D and wet-lab build-out. Joins from the Hesselberth Lab.",
+    bio: "Leads wet lab operations and project execution. Optimized and validated the published aa-tRNA-seq method into commercial-grade SOPs in the Hesselberth Lab.",
   },
   {
     name: "Aleksandar Radakovic, PhD",
     role: "Co-Inventor, Scientific Advisor",
     photo: "/team/aleks-radakovic.jpg",
-    bio: "Helen Hay Whitney Fellow in the Thornton Lab at the University of Chicago.",
+    bio: "Developed the covalent-capture chemistry behind aa-tRNA-seq during his PhD in Jack Szostak's lab. Helen Hay Whitney Fellow at the University of Chicago, investigating the origins of translation.",
   },
   ...(SHOW_SPIKE
     ? [
@@ -59,38 +59,41 @@ const TEAM = [
   title="About"
   description="Andon Bio is a University of Colorado School of Medicine spinout in Aurora, Colorado, building the measurement layer that makes protein expression predictable — starting with direct measurement of the cellular supply chain behind production."
 >
-  {/* Hero */}
-  <section class="px-6 pt-20 pb-16 md:px-10 md:pt-28 md:pb-20">
-    <div class="mx-auto max-w-[48rem]">
-      <h1
-        class="rise text-balance font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-ink md:text-[3.5rem]"
-      >
-        We're building the measurement layer for protein production.
-      </h1>
-      <p
-        class="rise mt-6 max-w-[42rem] text-lg leading-[1.7] text-muted md:text-xl"
-        style="animation-delay: 120ms"
-      >
-        Andon Bio turns a part of the cell that has never been visible into data,
-        and that data into a way to predict how proteins express. We started with
-        a method no one else had. We're building it into the foundation that
-        protein design has been missing.
-      </p>
+  {/* Hero — text left on the rail, rotating ring right. */}
+  <section class="px-6 pt-12 pb-8 md:px-10 md:pt-16 md:pb-10">
+    <div
+      class="mx-auto grid max-w-[72rem] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
+    >
+      <div>
+        <h1
+          class="rise max-w-[44rem] text-balance font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-ink md:text-[3.5rem]"
+        >
+          We're building the measurement layer for protein production.
+        </h1>
+        <p
+          class="rise mt-6 max-w-[44rem] text-lg leading-[1.7] text-muted md:text-xl"
+          style="animation-delay: 120ms"
+        >
+          Andon Bio turns a part of the cell that has never been visible into
+          data, and that data into a way to predict how proteins express. We
+          started with a method no one else had. We're building it into the
+          foundation that protein design has been missing.
+        </p>
+      </div>
+      <Ring />
     </div>
   </section>
 
-  {/* Beat 1 — thesis / data frontier */}
-  <section class="border-t border-line/60 px-6 py-20 md:px-10 md:py-24">
-    <div
-      class="mx-auto grid max-w-[72rem] gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16"
-    >
+  {/* Beat 1 — thesis / data frontier. Heading over body, left on the rail. */}
+  <section class="px-6 py-8 md:px-10 md:py-12">
+    <div class="mx-auto max-w-[72rem]">
       <h2
-        class="rise text-balance font-display text-2xl font-bold leading-[1.15] tracking-[-0.02em] text-ink md:text-[2.25rem]"
+        class="rise max-w-[42rem] text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
       >
         A new kind of biological data.
       </h2>
       <div
-        class="rise space-y-4 self-end text-lg leading-[1.7] text-muted"
+        class="rise mt-6 max-w-[46rem] space-y-5 text-lg leading-[1.75] text-muted"
         style="animation-delay: 100ms"
       >
         <p>
@@ -110,10 +113,10 @@ const TEAM = [
   </section>
 
   {/* Beat 2 — Team. One uniform grid; the role label on each tile delineates. */}
-  <section class="px-6 py-12 md:px-10 md:py-16">
+  <section class="px-6 py-8 md:px-10 md:py-12">
     <div class="mx-auto max-w-[72rem]">
       <h2
-        class="font-display text-2xl font-bold tracking-[-0.02em] text-ink md:text-3xl"
+        class="font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
       >
         Team
       </h2>
@@ -150,40 +153,50 @@ const TEAM = [
     </div>
   </section>
 
-  {/* Beat 3 — Colorado */}
-  <section class="px-6 pt-12 pb-4 md:px-10 md:pt-16">
-    <div class="mx-auto max-w-[72rem]">
-      <h2
-        class="font-display text-2xl font-bold tracking-[-0.02em] text-ink md:text-3xl"
-      >
-        The front range of RNA science.
-      </h2>
-      <p class="mt-5 max-w-[46rem] text-lg leading-[1.7] text-muted">
-        Andon Bio is a spinout of the <a
-          href={LINKS.rbi}
-          target="_blank"
-          rel="noopener"
-          class="text-accent-700 underline-offset-4 hover:text-accent-800 hover:underline"
-          >RNA Bioscience Initiative</a
-        > at the University of Colorado. Colorado boasts a robust, <a
-          href={LINKS.rnaClub}
-          target="_blank"
-          rel="noopener"
-          class="text-accent-700 underline-offset-4 hover:text-accent-800 hover:underline"
-          >40-year RNA research ecosystem</a
-        > — a self-replicating community translating foundational science into new
-        discoveries.
-      </p>
+  {/* Beat 3 — Colorado. Text left on the rail; state outline + Aurora star right. */}
+  <section class="px-6 py-8 md:px-10 md:py-12">
+    <div
+      class="mx-auto grid max-w-[72rem] items-center gap-10 lg:grid-cols-[1fr_0.7fr] lg:gap-16"
+    >
+      <div>
+        <h2
+          class="max-w-[42rem] text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
+        >
+          The front range of RNA science.
+        </h2>
+        <p class="mt-6 max-w-[46rem] text-lg leading-[1.75] text-muted">
+          Andon Bio is a spinout of the <a
+            href={LINKS.rbi}
+            target="_blank"
+            rel="noopener"
+            class="text-accent-700 underline-offset-4 hover:text-accent-800 hover:underline"
+            >RNA Bioscience Initiative</a
+          > at the University of Colorado School of Medicine. Colorado boasts a
+          robust, <a
+            href={LINKS.rnaClub}
+            target="_blank"
+            rel="noopener"
+            class="text-accent-700 underline-offset-4 hover:text-accent-800 hover:underline"
+            >40-year RNA research ecosystem</a
+          > — a self-replicating community translating foundational science into
+          new discoveries.
+        </p>
+      </div>
+
+      {/* Flag of Colorado — official public-domain state flag (SVG). Thin frame
+          so the white stripe reads against the cream. */}
+      <div class="flex justify-center lg:justify-end">
+        <img
+          src="/figures/colorado-flag.svg"
+          alt="Flag of Colorado"
+          width="1800"
+          height="1200"
+          loading="lazy"
+          class="w-full max-w-[16rem] rounded-xl border border-line/70 shadow-sm"
+        />
+      </div>
     </div>
   </section>
 
-  <div class="mt-10 md:mt-14">
-    <SupportedBy />
-  </div>
-
-  <Cta
-    heading="Build with us."
-    body="Whether you express a lot of protein, build the models that will use this data, or want to back what we're building — we'd like to hear from you."
-    cta="Let's talk"
-  />
+  <SupportedBy />
 </Layout>

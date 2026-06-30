@@ -1,0 +1,25 @@
+---
+// The rotating amino-acid ring — shared hero artifact, used top-right on every
+// page. Unlabeled brand imagery; the animation lives in global.css (.andon-ring).
+interface Props {
+  class?: string; // override the img sizing per page if needed
+  delay?: string; // entrance animation delay
+}
+const {
+  class: imgClass = "w-[16rem] sm:w-[20rem] md:w-[26rem]",
+  delay = "200ms",
+} = Astro.props;
+---
+
+<div
+  class="rise-scale flex items-center justify-center lg:justify-end"
+  style={`animation-delay: ${delay}`}
+>
+  <img
+    src="/andon_ring.svg"
+    alt="The twenty amino acids arranged as a ring"
+    width="416"
+    height="416"
+    class:list={["andon-ring", imgClass]}
+  />
+</div>
