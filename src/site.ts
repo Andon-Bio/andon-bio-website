@@ -66,7 +66,7 @@ export const SUPPORTERS = {
   second: [
     {
       label: "CU Innovations (HIE Initiative)",
-      href: "https://www.cuanschutz.edu/innovations/HIE",
+      href: "https://www.cuanschutz.edu/innovations/campus-innovator/funding/toolbox-microgrants",
     },
     { label: "Nucleate", href: "https://nucleate.org" },
     { label: "Blueprint", href: "https://engine.xyz/blueprint" },
