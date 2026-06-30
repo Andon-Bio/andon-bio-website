@@ -11,7 +11,7 @@ interface Props {
 
 const {
   heading = "See what's actually happening inside your system.",
-  body = "Every protein makes its own demands on your cells' supply chain. That's never been visible.",
+  body = "",
   cta = "Let's take a look",
   tone = "light",
 } = Astro.props;
@@ -36,14 +36,18 @@ const dark = tone === "dark";
     >
       {heading}
     </h2>
-    <p
-      class:list={[
-        "mx-auto mt-5 max-w-[34rem] text-lg leading-[1.7]",
-        dark ? "text-paper-muted" : "text-muted",
-      ]}
-    >
-      {body}
-    </p>
+    {
+      body && (
+        <p
+          class:list={[
+            "mx-auto mt-5 max-w-[34rem] text-lg leading-[1.7]",
+            dark ? "text-paper-muted" : "text-muted",
+          ]}
+        >
+          {body}
+        </p>
+      )
+    }
     <div class="mt-9 flex flex-col items-center gap-4">
       <Button
         href={`mailto:${SITE.email}`}
