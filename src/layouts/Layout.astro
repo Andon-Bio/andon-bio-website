@@ -23,11 +23,12 @@ const { title, description, image } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Fonts: Plus Jakarta Sans (display) + Inter (body). Monaco (mono) is a system font. -->
+    <!-- Fonts: Plus Jakarta Sans (display, 700/800) + Inter (body, 400). Monaco
+         (mono/button) is a system font. Only weights actually used are requested. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -36,8 +37,13 @@ const { title, description, image } = Astro.props;
     <!-- Analytics include point: drop Plausible / GoatCounter / Cloudflare snippet here. -->
   </head>
   <body>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:font-button focus:text-sm focus:text-paper"
+      >Skip to content</a
+    >
     <Navbar />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

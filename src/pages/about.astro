@@ -1,8 +1,17 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Ring from "../components/Ring.astro";
 import SupportedBy from "../components/sections/SupportedBy.astro";
 import { LINKS } from "../site";
+
+// Team photos live in src/assets so astro:assets emits optimized, responsive WebP.
+import lauraPhoto from "../assets/team/laura-white.jpg";
+import jakePhoto from "../assets/team/jake-armstrong.jpg";
+import jayPhoto from "../assets/team/jay-hesselberth.jpg";
+import keziaPhoto from "../assets/team/kezia-dobson.jpg";
+import aleksPhoto from "../assets/team/aleks-radakovic.jpg";
+import spikePhoto from "../assets/team/spike-willcocks.jpg";
 
 // Spike Willcocks (ONT co-founder) is staged but GATED until his advisory
 // agreement is signed. Flip to true to ship his card — nothing else to change.
@@ -15,31 +24,31 @@ const TEAM = [
   {
     name: "Laura White, PhD",
     role: "CEO, Co-Founder",
-    photo: "/team/laura-white.jpg",
+    photo: lauraPhoto,
     bio: "Co-invented aa-tRNA-seq and led its development in the Hesselberth Lab. PhD in molecular biology. Strategy consultant turned tRNA biologist, working across experimental and computational method development.",
   },
   {
     name: "Jake Armstrong, MBA",
     role: "COO, Co-Founder",
-    photo: "/team/jake-armstrong.jpg",
+    photo: jakePhoto,
     bio: "15+ years building and scaling SaaS and ML platforms (IBM, BryterCX). Leads product, commercial, and the ML platform.",
   },
   {
     name: "Jay Hesselberth, PhD",
     role: "Scientific Co-Founder",
-    photo: "/team/jay-hesselberth.jpg",
+    photo: jayPhoto,
     bio: "Co-invented aa-tRNA-seq. Professor at the University of Colorado School of Medicine and Director of the University of Colorado RNA Bioscience Initiative.",
   },
   {
     name: "Kezia Dobson",
     role: "Founding Scientist",
-    photo: "/team/kezia-dobson.jpg",
+    photo: keziaPhoto,
     bio: "Joins from the Hesselberth Lab; leads wet lab operations and project execution. Optimized and validated the published aa-tRNA-seq method into commercial-grade SOPs.",
   },
   {
     name: "Aleksandar Radakovic, PhD",
     role: "Scientific Advisor",
-    photo: "/team/aleks-radakovic.jpg",
+    photo: aleksPhoto,
     bio: "Developed the covalent-capture chemistry behind aa-tRNA-seq during his PhD in Jack Szostak's lab. Helen Hay Whitney Fellow at the University of Chicago, investigating the origins of translation.",
   },
   ...(SHOW_SPIKE
@@ -47,7 +56,7 @@ const TEAM = [
         {
           name: "Spike Willcocks, PhD",
           role: "Scientific Advisor",
-          photo: "/team/spike-willcocks.jpg",
+          photo: spikePhoto,
           bio: "Co-founder, Oxford Nanopore Technologies.",
         },
       ]
@@ -100,11 +109,13 @@ const TEAM = [
               class="rise flex h-full flex-col overflow-hidden rounded-2xl border border-line/70 bg-surface"
               style={`animation-delay: ${i * 60}ms`}
             >
-              <img
+              <Image
                 src={p.photo}
                 alt={p.name}
-                width="800"
-                height="800"
+                widths={[368, 736]}
+                sizes="(min-width: 1024px) 368px, (min-width: 640px) 45vw, 90vw"
+                format="webp"
+                quality={72}
                 loading="lazy"
                 class="aspect-square w-full object-cover object-top"
               />

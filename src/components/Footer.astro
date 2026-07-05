@@ -1,5 +1,5 @@
 ---
-import { SITE } from "../site";
+import { SITE, NAV } from "../site";
 
 // Build-time dynamic year — never goes stale.
 const year = new Date().getFullYear();
@@ -11,17 +11,32 @@ const year = new Date().getFullYear();
   >
     <div class="max-w-[22rem]">
       <div class="flex items-center gap-3">
-        <img
-          src="/andon_ring.svg"
-          alt="Andon Bio"
-          width="32"
-          height="32"
-          class="h-8 w-8"
-        />
+        <img src="/andon_ring.svg" alt="" width="32" height="32" class="h-8 w-8" />
         <span class="font-display text-lg font-bold tracking-tight">Andon Bio</span>
       </div>
       <p class="mt-4 text-sm leading-[1.6] text-paper-muted">{SITE.tagline}</p>
     </div>
+
+    {/* Persistent site nav — also the only way to reach Science/About on mobile,
+        where the header links are hidden. */}
+    <nav
+      class="flex flex-col gap-2 text-sm text-paper-muted"
+      aria-label="Footer"
+    >
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            class="transition-colors hover:text-paper"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href={`mailto:${SITE.email}`} class="transition-colors hover:text-paper">
+        Contact
+      </a>
+    </nav>
 
     <div
       class="flex flex-col gap-2 text-sm text-paper-muted md:items-end md:text-right"

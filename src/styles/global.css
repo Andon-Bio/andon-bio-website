@@ -28,12 +28,15 @@
   --color-paper: oklch(0.955 0.007 90);    /* text on dark */
   --color-paper-muted: oklch(0.8 0.01 90); /* secondary text on dark */
 
-  /* Accent (amber signal scale) */
+  /* Accent (amber signal scale).
+     400/base/600 stay bright for use on the dark navy panels.
+     700/800 are the on-LIGHT text roles, darkened to clear WCAG AA (4.5:1) on
+     the cream canvas: 700 ≈ 4.7:1, 800 (hover) ≈ 6.6:1. */
   --color-accent: oklch(0.78 0.105 85);     /* base */
   --color-accent-400: oklch(0.82 0.098 86); /* lighter — on dark / hovers */
   --color-accent-600: oklch(0.72 0.105 85); /* amber button hover */
-  --color-accent-700: oklch(0.63 0.095 84); /* link text on light */
-  --color-accent-800: oklch(0.53 0.08 83);  /* link hover */
+  --color-accent-700: oklch(0.53 0.11 84);  /* link/eyebrow text on light (AA) */
+  --color-accent-800: oklch(0.45 0.10 83);  /* link hover on light (AA) */
 
   /* Lines + focus */
   --color-line: oklch(0.8 0.012 88);       /* borders on light */
