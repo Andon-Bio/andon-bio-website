@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Andon Bio">
-  <rect width="32" height="32" rx="7" fill="#1e2530"/>
-  <circle cx="16" cy="16" r="9" fill="none" stroke="#d6a85c" stroke-width="3" stroke-dasharray="3.1 2.6" stroke-linecap="round"/>
+  <!-- graphite tile -->
+  <rect width="32" height="32" rx="5" fill="#1e2530"/>
+  <!-- andon signal stack: top lamp lit in the amino-acid ring's largest green (#74C476), two unlit -->
+  <rect x="9.5" y="5"  width="13" height="6" rx="2" fill="#74C476"/>
+  <rect x="9.5" y="13" width="13" height="6" rx="2" fill="#58606d"/>
+  <rect x="9.5" y="21" width="13" height="6" rx="2" fill="#58606d"/>
 </svg>
