@@ -39,21 +39,12 @@ export const LINKS = {
 
 // Support / backing. Rendered as tiered TEXT LINKS on About only ("Supported by").
 // Two visual tiers; the top tier ranks by prominence.
-//
-// ACTIVATE EMBARGO (date-critical): the Activate Fellowship is CONFIDENTIAL and
-// EMBARGOED until 2026-07-14. It must not render anywhere before then. When the
-// embargo lifts, set SHOW_ACTIVATE = true and supply its announcement URL — it
-// slots in at the FRONT of the top tier at max prominence, no redesign needed.
-export const SHOW_ACTIVATE = false;
-
-const ACTIVATE = {
-  label: "Activate",
-  href: "", // post-embargo announcement URL — Laura to supply
-};
-
 export const SUPPORTERS = {
   top: [
-    ...(SHOW_ACTIVATE ? [ACTIVATE] : []),
+    {
+      label: "Activate",
+      href: "https://activate.org/the-fellowship",
+    },
     {
       label: "Colorado OEDIT",
       href: "https://oedit.colorado.gov/press-release/oedit-announces-grants-to-35-colorado-startups-and-researchers-in-the-advanced",

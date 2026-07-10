@@ -13,10 +13,6 @@ import keziaPhoto from "../assets/team/kezia-dobson.jpg";
 import aleksPhoto from "../assets/team/aleks-radakovic.jpg";
 import spikePhoto from "../assets/team/spike-willcocks.jpg";
 
-// Spike Willcocks (ONT co-founder) is staged but GATED until his advisory
-// agreement is signed. Flip to true to ship his card — nothing else to change.
-const SHOW_SPIKE = false;
-
 // One unified team grid — same tile size for everyone. The role label on each
 // tile delineates founders from the founding scientist + advisor(s); we no longer
 // split them into two sections. Founders first.
@@ -51,16 +47,12 @@ const TEAM = [
     photo: aleksPhoto,
     bio: "Developed the covalent-capture chemistry behind aa-tRNA-seq during his PhD in Jack Szostak's lab. Helen Hay Whitney Fellow at the University of Chicago, investigating the origins of translation.",
   },
-  ...(SHOW_SPIKE
-    ? [
-        {
-          name: "Spike Willcocks, PhD",
-          role: "Scientific Advisor",
-          photo: spikePhoto,
-          bio: "Co-founder, Oxford Nanopore Technologies.",
-        },
-      ]
-    : []),
+  {
+    name: "Spike Willcocks, PhD",
+    role: "Scientific Advisor",
+    photo: spikePhoto,
+    bio: "Co-founder, Oxford Nanopore Technologies.",
+  },
 ];
 ---
 
