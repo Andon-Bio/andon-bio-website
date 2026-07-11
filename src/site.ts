@@ -61,6 +61,9 @@ export const SUPPORTERS = {
     },
     { label: "Nucleate", href: "https://nucleate.org" },
     { label: "Blueprint", href: "https://engine.xyz/blueprint" },
-    { label: "Innosphere", href: "https://innosphere.org" },
+    {
+      label: "Innosphere Life Sciences Incubator",
+      href: "https://innosphere.org/life-sciences-accelerator",
+    },
   ],
 };
