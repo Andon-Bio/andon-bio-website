@@ -7,9 +7,11 @@
   amber "signal" accent (with a scale), cool-blue focus ring.
 */
 @theme {
-  /* Type */
-  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  /* Type. --font-inter / --font-jakarta are defined at runtime by Astro's <Font>
+     component (self-hosted, with metric-based fallbacks baked in); the literal
+     names + system stack remain as a hard fallback if that CSS hasn't loaded. */
+  --font-display: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
   --font-button: "Monaco", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   /* Surfaces */

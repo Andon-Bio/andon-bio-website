@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import SupportedBy from "../components/sections/SupportedBy.astro";
 import { LINKS } from "../site";
@@ -74,12 +74,12 @@ const TEAM = [
               class="rise flex h-full flex-col overflow-hidden rounded-2xl border border-line/70 bg-surface"
               style={`animation-delay: ${i * 60}ms`}
             >
-              <Image
+              <Picture
                 src={p.photo}
                 alt={p.name}
                 widths={[368, 736]}
                 sizes="(min-width: 1024px) 368px, (min-width: 640px) 45vw, 90vw"
-                format="webp"
+                formats={["avif", "webp"]}
                 quality={72}
                 loading="lazy"
                 class="aspect-square w-full object-cover object-top"

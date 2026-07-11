@@ -20,21 +20,38 @@ const fullTitle = title
 const base = Astro.site ?? new URL(SITE.url);
 const canonical = new URL(Astro.url.pathname, base).href;
 const ogImage = new URL(image, base).href;
+const logo = new URL("/logo-512.png", base).href;
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: SITE.name,
-  url: SITE.url,
-  email: SITE.email,
-  description: SITE.description,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Aurora",
-    addressRegion: "CO",
-    addressCountry: "US",
+// Two linked nodes: the company entity + the website itself. `sameAs` and `logo`
+// are the fields Google's knowledge panel and LLMs lift for entity understanding.
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE.url}/#organization`,
+    name: SITE.name,
+    url: SITE.url,
+    logo,
+    image: ogImage,
+    email: SITE.email,
+    description: SITE.description,
+    sameAs: ["https://www.linkedin.com/company/111482901/"],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Aurora",
+      addressRegion: "CO",
+      addressCountry: "US",
+    },
   },
-};
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE.url}/#website`,
+    name: SITE.name,
+    url: SITE.url,
+    publisher: { "@id": `${SITE.url}/#organization` },
+  },
+];
 ---
 
 <title>{fullTitle}</title>
@@ -48,12 +65,18 @@ const jsonLd = {
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={ogImage} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={`${SITE.name} — ${SITE.tagline}`} />
+<meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={`${SITE.name} — ${SITE.tagline}`} />
 
 <!-- Structured data -->
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

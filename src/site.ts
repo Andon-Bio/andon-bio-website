@@ -34,7 +34,8 @@ export const LINKS = {
   rnaClub:
     "https://medschool.cuanschutz.edu/rbi/events/evenings-with-rna/colorado-rna-club",
   londonCallingWatch: "https://www.youtube.com/watch?v=d8NISg6Yfbk&t=5s",
-  londonCallingEmbed: "https://www.youtube.com/embed/d8NISg6Yfbk",
+  // Privacy-enhanced domain; only requested after the user clicks the facade.
+  londonCallingEmbed: "https://www.youtube-nocookie.com/embed/d8NISg6Yfbk",
 } as const;
 
 // Support / backing. Rendered as tiered TEXT LINKS on About only ("Supported by").

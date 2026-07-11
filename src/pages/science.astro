@@ -1,10 +1,11 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Ring from "../components/Ring.astro";
 import Button from "../components/Button.astro";
 import { PAPER, LINKS } from "../site";
 import paperCover from "../assets/figures/paper-natcomms.jpg";
+import talkThumb from "../assets/figures/london-calling-thumb.jpg";
 
 const ARROW = `<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>`;
 ---
@@ -91,12 +92,12 @@ const ARROW = `<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>`;
             class="group shrink-0 self-start"
             aria-label="Read the paper — opens the article in Nature Communications"
           >
-            <Image
+            <Picture
               src={paperCover}
               alt="First page of the paper in Nature Communications"
               widths={[176, 352]}
               sizes="(min-width: 640px) 176px, 144px"
-              format="webp"
+              formats={["avif", "webp"]}
               quality={72}
               loading="lazy"
               class="w-36 rounded-lg border border-line/70 shadow-sm transition-transform duration-200 group-hover:-translate-y-0.5 sm:w-44"
@@ -156,18 +157,67 @@ const ARROW = `<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>`;
           set:html={ARROW}
         />
       </a>
+      {/* Click-to-load facade: a static poster stands in until the visitor
+          clicks, so YouTube's player JS + cookies never load otherwise. */}
       <div
         class="mt-5 aspect-video w-full max-w-[60rem] overflow-hidden rounded-2xl border border-line-dark bg-navy-soft"
       >
-        <iframe
-          class="h-full w-full"
-          src={LINKS.londonCallingEmbed}
-          title="The method, presented at London Calling"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen></iframe>
+        <button
+          type="button"
+          class="yt-facade group relative block h-full w-full cursor-pointer"
+          data-embed={`${LINKS.londonCallingEmbed}?autoplay=1`}
+          aria-label="Play the talk: The method, presented at London Calling"
+        >
+          <Picture
+            src={talkThumb}
+            alt=""
+            formats={["avif", "webp"]}
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 64rem) 60rem, 100vw"
+            quality={70}
+            loading="lazy"
+            class="h-full w-full object-cover"
+          />
+          <span
+            class="absolute inset-0 grid place-items-center bg-navy/40 transition-colors group-hover:bg-navy/25"
+            aria-hidden="true"
+          >
+            <span
+              class="grid h-16 w-16 place-items-center rounded-full bg-ink/85 shadow-lg ring-1 ring-white/10 transition-transform group-hover:scale-105"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="ml-0.5 text-paper"
+              >
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+            </span>
+          </span>
+        </button>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  // Click-to-load YouTube facade — swaps the poster for the real embed only on
+  // click, so the heavy player never loads for visitors who don't watch. Astro
+  // bundles this script into /science only; the rest of the site stays zero-JS.
+  for (const btn of document.querySelectorAll(".yt-facade")) {
+    btn.addEventListener("click", () => {
+      const iframe = document.createElement("iframe");
+      iframe.className = "h-full w-full";
+      iframe.src = btn.dataset.embed;
+      iframe.title = "The method, presented at London Calling";
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allowFullscreen = true;
+      btn.replaceWith(iframe);
+      iframe.focus();
+    });
+  }
+</script>
