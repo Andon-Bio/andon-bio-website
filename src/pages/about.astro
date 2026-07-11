@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import Ring from "../components/Ring.astro";
 import SupportedBy from "../components/sections/SupportedBy.astro";
 import { LINKS } from "../site";
 
@@ -60,39 +59,14 @@ const TEAM = [
   title="About"
   description="Andon Bio is a University of Colorado School of Medicine spinout in Aurora, Colorado, building the measurement layer that makes protein expression predictable, starting with direct measurement of the cellular supply chain behind production."
 >
-  {/* Hero — text left on the rail, rotating ring right. */}
-  <section class="px-6 pt-12 pb-8 md:px-10 md:pt-16 md:pb-10">
-    <div
-      class="mx-auto grid max-w-[72rem] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
-    >
-      <div>
-        <h1
-          class="rise max-w-[44rem] text-balance font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-ink md:text-[3.5rem]"
-        >
-          We're building the measurement layer for protein production.
-        </h1>
-        <p
-          class="rise mt-6 max-w-[44rem] text-lg leading-[1.7] text-muted md:text-xl"
-          style="animation-delay: 120ms"
-        >
-          For all the progress in designing proteins, one question stays
-          stubbornly hard to predict: will a given sequence express, and how
-          well? The answer depends on a molecular supply chain no one could
-          measure, until now.
-        </p>
-      </div>
-      <Ring />
-    </div>
-  </section>
-
-  {/* Beat 2 — Team. One uniform grid; the role label on each tile delineates. */}
-  <section class="px-6 py-8 md:px-10 md:py-12">
+  {/* Team — the About page opens straight into the team grid. */}
+  <section class="px-6 pt-12 pb-8 md:px-10 md:pt-16 md:pb-12">
     <div class="mx-auto max-w-[72rem]">
-      <h2
-        class="font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
+      <h1
+        class="rise font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
       >
         Team
-      </h2>
+      </h1>
       <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           TEAM.map((p, i) => (

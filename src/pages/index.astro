@@ -1,39 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/sections/Hero.astro";
-import Problem from "../components/sections/Problem.astro";
-import Measures from "../components/sections/Measures.astro";
-import Vision from "../components/sections/Vision.astro";
+import Beats from "../components/sections/Beats.astro";
 import Cta from "../components/sections/Cta.astro";
-import { PAPER, LINKS } from "../site";
 ---
 
 <Layout>
   <Hero />
-  <Problem />
-  <Measures />
-  <Vision />
-
-  {/* Provenance — single lightweight line. Full support strip lives on About. */}
-  <section class="border-t border-line/60 px-6 py-8 md:px-10">
-    <p
-      class="mx-auto max-w-[72rem] text-center text-sm leading-[1.8] text-muted"
-    >
-      Spun out of the <a
-        href={LINKS.cuSom}
-        target="_blank"
-        rel="noopener"
-        class="text-muted underline-offset-4 hover:text-ink hover:underline"
-        >University of Colorado School of Medicine</a
-      > <span class="px-1.5 text-line">·</span> published in <a
-        href={PAPER.url}
-        target="_blank"
-        rel="noopener"
-        class="italic text-muted underline-offset-4 hover:text-ink hover:underline"
-        >Nature Communications</a
-      >
-    </p>
-  </section>
+  <Beats />
 
   <Cta tone="dark" />
 </Layout>
