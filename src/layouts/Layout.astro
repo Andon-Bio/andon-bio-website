@@ -36,7 +36,13 @@ const { title, description, image } = Astro.props;
 
     <Seo title={title} description={description} image={image} />
 
-    <!-- Analytics include point: drop Plausible / GoatCounter / Cloudflare snippet here. -->
+    <!-- Cloudflare Web Analytics — cookieless, no consent banner. is:inline so
+         Astro emits the beacon verbatim (external src + data-cf-beacon intact). -->
+    <script
+      is:inline
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "6883f14a73e0463ca3213466774bfd85"}'></script>
   </head>
   <body>
     <a
