@@ -10,13 +10,10 @@
   /* Type */
   --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-eyebrow: "Inter", system-ui, -apple-system, sans-serif;
   --font-button: "Monaco", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   /* Surfaces */
   --color-cream: oklch(0.955 0.007 90);   /* canvas / page background */
-  --color-cream-deep: oklch(0.92 0.012 88);/* warm hero glow stop */
   --color-surface: oklch(0.915 0.008 88);  /* secondary light sections */
   --color-navy: oklch(0.21 0.025 250);     /* dark panels / footer (graphite) */
   --color-navy-soft: oklch(0.3 0.022 252); /* tiles on dark / primary btn hover */
@@ -24,7 +21,6 @@
   /* Text */
   --color-ink: oklch(0.21 0.025 250);      /* primary text (graphite) */
   --color-muted: oklch(0.46 0.02 255);     /* secondary text on light */
-  --color-faint: oklch(0.62 0.012 250);    /* eyebrow / metadata on light */
   --color-paper: oklch(0.955 0.007 90);    /* text on dark */
   --color-paper-muted: oklch(0.8 0.01 90); /* secondary text on dark */
 
@@ -44,6 +40,21 @@
   --color-ring: oklch(0.6 0.2 250);        /* focus ring (cool blue) */
 }
 
+/*
+  Canonical layout scale — keep roles consistent (Tailwind utilities, inline):
+    Rail:           max-w-[72rem] (chrome + content); Cta centered = max-w-[48rem]
+    Section pad:    hero  px-6 pt-12 pb-8  md:px-10 md:pt-16 md:pb-10
+                    body  px-6 py-8        md:px-10 md:py-12
+                    dark  px-6 pt-12 pb-10 md:px-10 md:pt-16 md:pb-12
+    Hero H1:        text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] md:text-[3.5rem]
+    Section H1/H2:  text-3xl font-bold      leading-[1.1]  tracking-[-0.02em] md:text-[2.5rem]
+    Card H3:        text-xl  font-bold      leading-[1.25] tracking-[-0.01em] md:text-2xl (text-xl only, 3-col)
+    Body section:   text-lg leading-[1.7]   (hero lead adds md:text-xl)
+    Body card:      text-[0.95rem] leading-[1.65]
+    Eyebrow:        font-button text-xs uppercase tracking-[0.18em]
+    Margins:        eyebrow->heading mt-3; heading->body mt-6; heading->grid mt-8; card heading->body mt-4
+    Cards:          grid gap-6; padding p-6 md:p-8
+*/
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -53,7 +64,7 @@
     background-color: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    line-height: 1.8;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;

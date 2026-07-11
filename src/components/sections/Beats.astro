@@ -27,17 +27,17 @@ const TILES = [
 
 <section class="px-6 py-8 md:px-10 md:py-12">
   <div class="mx-auto max-w-[72rem]">
-    <div class="grid gap-4 sm:grid-cols-2 md:gap-5">
+    <div class="grid gap-6 sm:grid-cols-2">
       {
         TILES.map((t, i) => (
           <article
             class="rise flex flex-col rounded-lg border border-line/70 bg-surface p-6 md:p-8"
             style={`animation-delay: ${i * 80}ms`}
           >
-            <h2 class="font-display text-xl font-bold leading-[1.2] tracking-[-0.01em] text-ink md:text-2xl">
+            <h2 class="font-display text-xl font-bold leading-[1.25] tracking-[-0.01em] text-ink md:text-2xl">
               {t.title}
             </h2>
-            <p class="mt-3 text-[0.95rem] leading-[1.65] text-muted">
+            <p class="mt-4 text-[0.95rem] leading-[1.65] text-muted">
               {t.body}
             </p>
           </article>
