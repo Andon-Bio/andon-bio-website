@@ -2,6 +2,7 @@
 import { Picture } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Ring from "../components/Ring.astro";
+import Trna from "../components/Trna.astro";
 import Button from "../components/Button.astro";
 import { PAPER, LINKS } from "../site";
 import paperCover from "../assets/figures/paper-natcomms.jpg";
@@ -40,27 +41,33 @@ const ARROW = `<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>`;
     </div>
   </section>
 
-  {/* The chemistry — single column on the rail. */}
+  {/* The chemistry — text on the rail, the charging tRNA to its right,
+      mirroring the hero's text/ring split. */}
   <section class="px-6 py-8 md:px-10 md:py-12">
-    <div class="mx-auto max-w-[72rem]">
-      <span
-        class="font-button text-xs uppercase tracking-[0.18em] text-accent-700"
-      >
-        The chemistry
-      </span>
-      <h2
-        class="mt-3 max-w-[42rem] text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
-      >
-        We keep the signal other methods throw away.
-      </h2>
-      <p class="mt-6 max-w-[46rem] text-lg leading-[1.7] text-muted">
-        A charged tRNA carries its amino acid; an empty one doesn't, and that
-        amino acid, the signal it's ready to build, is easily lost. It falls off
-        on its own, and standard prep strips away the rest. Our chemistry holds
-        it in place, so every tRNA is read individually by nanopore with its
-        charge intact. One read gives us its sequence, its modifications, and the
-        amino acid it carries.
-      </p>
+    <div
+      class="mx-auto grid max-w-[72rem] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
+    >
+      <div>
+        <span
+          class="font-button text-xs uppercase tracking-[0.18em] text-accent-700"
+        >
+          The chemistry
+        </span>
+        <h2
+          class="mt-3 max-w-[42rem] text-balance font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]"
+        >
+          We keep the signal other methods throw away.
+        </h2>
+        <p class="mt-6 max-w-[46rem] text-lg leading-[1.7] text-muted">
+          A charged tRNA carries its amino acid; an empty one doesn't, and that
+          amino acid, the signal it's ready to build, is easily lost. It falls
+          off on its own, and standard prep strips away the rest. Our chemistry
+          holds it in place, so every tRNA is read individually by nanopore with
+          its charge intact. One read gives us its sequence, its modifications,
+          and the amino acid it carries.
+        </p>
+      </div>
+      <Trna />
     </div>
   </section>
 

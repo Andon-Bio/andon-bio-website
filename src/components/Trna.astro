@@ -1,0 +1,50 @@
+---
+// The charging tRNA — a Goodsell-style render of yeast tRNA-Phe (PDB 4TNA) that
+// pulses from inert (near-black, uncharged) to functional (green→gold body with
+// an amber amino-acid disc docked at the 3′ tip). It illustrates THE CHEMISTRY:
+// a tRNA is only functional when it's carrying its amino acid — the form never
+// changes, only the state. Sits to the right of THE CHEMISTRY section, centred
+// under the ring in the hero above (the boxClass width matches the ring's box,
+// and the image is centred inside it, so their centres line up).
+//
+// Asset pipeline lives in ~/Projects/research/andon-graphics/trna-hero (do not
+// edit the renders here). Those renders clip the amber glow at the frame edge;
+// the copies in public/figures/trna are post-processed so the molecule is kept
+// exactly while the halo is regenerated as a clean radial glow with room to
+// breathe (blends into the page's cream background). No ffmpeg locally yet, so we
+// ship the GIF loop directly; a <picture> swaps in the charged still under
+// prefers-reduced-motion, mirroring how global.css gates .andon-ring.
+interface Props {
+  class?: string; // override the img sizing per page if needed
+  boxClass?: string; // match the ring's box width so the image centres under it
+  delay?: string; // entrance animation delay
+}
+const {
+  class: imgClass = "w-[15rem] sm:w-[19rem] md:w-[24rem]",
+  boxClass = "w-[16rem] sm:w-[20rem] md:w-[26rem]",
+  delay = "220ms",
+} = Astro.props;
+---
+
+{/* relative + lg:top-5 nudges it ~20px down on desktop; using `top` (not a
+    transform) avoids clashing with the .rise-scale entrance transform. */}
+<div
+  class="rise-scale relative flex justify-center lg:justify-end lg:top-5"
+  style={`animation-delay: ${delay}`}
+>
+  <figure class:list={["flex justify-center", boxClass]}>
+    <picture>
+      <source
+        srcset="/figures/trna/trna-charge-still.png"
+        media="(prefers-reduced-motion: reduce)"
+      />
+      <img
+        src="/figures/trna/trna-charge.gif"
+        alt="A transfer RNA molecule cycling between its inert, uncharged state and its charged, functional state, as an amber amino acid docks at its tip."
+        width="472"
+        height="472"
+        class:list={["block", imgClass]}
+      />
+    </picture>
+  </figure>
+</div>
