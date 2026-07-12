@@ -36,7 +36,10 @@ const linkSizes: Record<string, string> = {
   lg: "text-base tracking-wide",
 };
 
-const sizeClass = variant === "link" ? linkSizes[size] : sizes[size];
+// Non-link buttons get a 44px min height on touch devices (WCAG 2.5.5 tap
+// target). pointer-coarse keeps desktop/mouse sizing exactly as designed.
+const sizeClass =
+  variant === "link" ? linkSizes[size] : `${sizes[size]} pointer-coarse:min-h-11`;
 ---
 
 <a class:list={[base, variants[variant], sizeClass, className]} {...rest}>
