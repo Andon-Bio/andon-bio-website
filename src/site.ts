@@ -3,6 +3,7 @@ export const SITE = {
   name: "Andon Bio",
   url: "https://andon.bio",
   email: "hello@andon.bio",
+  linkedin: "https://www.linkedin.com/company/111482901/",
   location: "Aurora, Colorado",
   tagline:
     "Measuring the cellular supply chain to make protein expression predictable.",

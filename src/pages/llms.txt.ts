@@ -25,7 +25,7 @@ The measurement is single-molecule. A charged tRNA carries its amino acid; an em
 ## Contact
 - Email: ${SITE.email}
 - Location: ${SITE.location}, USA
-- LinkedIn: https://www.linkedin.com/company/111482901/
+- LinkedIn: ${SITE.linkedin}
 `;
 
 export const GET: APIRoute = () =>
