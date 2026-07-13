@@ -8,7 +8,7 @@ export const SITE = {
   tagline:
     "Measuring the cellular supply chain to make protein expression predictable.",
   description:
-    "Andon measures the cellular supply chain that governs protein expression during production — the missing layer for predicting whether, and how well, a sequence will express.",
+    "Designing proteins is cheap; making them isn't. Andon reads the supply and demand behind expression, making it as predictable as design.",
 } as const;
 
 export const NAV = [
