@@ -6,7 +6,7 @@ export const SITE = {
   linkedin: "https://www.linkedin.com/company/111482901/",
   location: "Aurora, Colorado",
   tagline:
-    "Measuring the cellular supply chain to make protein expression predictable.",
+    "The measurement layer for protein production.",
   description:
     "Designing proteins is cheap; making them isn't. Andon reads the supply and demand behind expression, making it as predictable as design.",
 } as const;
